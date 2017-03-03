@@ -1,31 +1,17 @@
 Rails.application.routes.draw do
-  get 'matches/index'
-
-  get 'answers/new'
-
-  get 'answers/create'
-
-  get 'answers/edit'
-
-  get 'answers/update'
-
-  get 'questions/index'
-
-  get 'questions/new'
-
-  get 'questions/create'
-
-  get 'questions/edit'
-
-  get 'questions/update'
-
-  get 'users/show'
-
-  get 'users/edit'
-
-  get 'users/update'
 
   devise_for :users
   root to: 'pages#home'
+
+  resources :users, only: [:show, :edit, :update] do
+    resources :questions, only: [:show] do
+      resources :answers, only: [:create]
+    end
+  end
+
+  resources :rooms, only: [:new, :create, :show]
+  resources :questions, only: [:index, :new, :create, :edit, :update] #pundit
+  resources :matches, only: [:index]
+  resources :answers, only: [:new, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
