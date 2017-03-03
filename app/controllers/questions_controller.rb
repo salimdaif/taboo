@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @flat.save
-      # redirect_to questions_path
+      redirect_to questions_path
     else
       render :new
     end
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      #redirect to question all
+      redirect_to questions_path
     else
       render :edit
     end
