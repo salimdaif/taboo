@@ -1,2 +1,16 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<div class="container">
+<h1>All Questions</h1>
+
+
+<%= link_to "Create", new_question_path, class: "btn btn-primary"%>
+
+      <% @questions.each do |question| %>
+
+        <h2><%= question .id%> . <%= question.content %></h2>
+
+      <br>
+      <%= link_to "Edit", edit_question_path(question), class: "btn btn-primary"%>
+      <% end %>
+
+
+</div>
