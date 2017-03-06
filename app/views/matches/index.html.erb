@@ -1,2 +1,308 @@
-<h1>Matches#index</h1>
+<h1>Matches</h1>
 <p>Find me in app/views/matches/index.html.erb</p>
+
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+<% content_for(:after_js) do %>
+<script>
+ // document.querySelector(".card-flip").classList.toggle("flip");
+
+
+//  Holder.addTheme('gray', {
+//   bg: '#777',
+//   fg: 'rgba(255,255,255,.75)',
+//   font: 'Helvetica',
+//   fontweight: 'normal'
+// });
+
+
+
+// $('.avatar-container').on('click',function(){
+
+//   if ($(this).find('.info').length <= 0) {
+//     $(this).append('<div class="info"><div class="info-inner"></div></div>');
+//   }
+
+//   var $info = $(this).find('.info'),
+//       $inner= $(this).find('.info-inner'),
+//       $p    = $(this).attr("class").match(/p-\w+/).toString().substring(2);
+
+//   $inner.text($p+'%');
+//   $info.toggleClass('js-active');
+// });
+
+// $('.avatar-container').last().trigger('click');
+
+</script>
+<% end %>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+            <!-- Card Flip -->
+        <div class="card-flip">
+          <div class="flip">
+            <div class="front">
+              <!-- front content -->
+              <div class="card text-center padded">
+                <!-- <img class="card-img-top" src="https://unsplash.it/100/180" alt="100%x180" style="height: 180px; width: 100%; display: block;" > -->
+
+                <div class="avatar-container p-55">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+                </div><!--.avatar-container-->
+
+                <div class="card-block">
+                  <h4 class="card-title">username</h4>
+                  <p class="card-text">Iam blabala and the reason why you should talk to me is that im really good  kfjgfregfoewh oirehoihwrgphrg oeirhfoiher h eroifvh eroiv hfoerih von oeruv oeruv ouenur v ni nberiuov iuebrv  iuevu i rviuberv iat....</p>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star_empty.png") %>
+                  <%= image_tag("star_empty.png") %>
+                </div>
+              </div>
+            </div>
+            <div class="back">
+              <!-- back content -->
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title text-center">Username</h4>
+                  <h6 class="card-subtitle text-muted text-center">Profile analysize</h6>
+                </div>
+                <!-- <img data-src="unsplash.it/100/180" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"> -->
+
+                <h4 class="align-left text-blue">Outgoing</h4>
+                  <progress  class="align-center" max="100" value="55"></progress>
+
+
+
+                <h4 class="align-right text-blue">Imagination</h4>
+                <progress  class="align-center" max="100" value="67"></progress>
+
+
+
+                <h4 class="align-left text-blue">Modesty</h4>
+                <progress  class="align-center" max="100" value="34"></progress>
+
+
+
+
+                <h4 class="align-right text-blue">Curiosity</h4>
+                  <progress  class="align-center" max="100" value="19"></progress>
+
+
+                <div class="card-block block-btn">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-card ">profile</a>
+                  <a href="#" class="btn btn-card ">Chat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!-- End Card Flip -->
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4">
+            <!-- Card Flip -->
+        <div class="card-flip">
+          <div class="flip">
+            <div class="front">
+              <!-- front content -->
+              <div class="card text-center padded">
+                <!-- <img class="card-img-top" src="https://unsplash.it/100/180" alt="100%x180" style="height: 180px; width: 100%; display: block;" > -->
+
+                <div class="avatar-container p-55">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+                </div><!--.avatar-container-->
+
+                <div class="card-block">
+                  <h4 class="card-title">username</h4>
+                  <p class="card-text">Iam blabala and the reason why you should talk to me is that im really good  kfjgfregfoewh oirehoihwrgphrg oeirhfoiher h eroifvh eroiv hfoerih von oeruv oeruv ouenur v ni nberiuov iuebrv  iuevu i rviuberv iat....</p>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star_empty.png") %>
+                  <%= image_tag("star_empty.png") %>
+                </div>
+              </div>
+            </div>
+            <div class="back">
+              <!-- back content -->
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title text-center">Username</h4>
+                  <h6 class="card-subtitle text-muted text-center">Profile analysize</h6>
+                </div>
+                <!-- <img data-src="unsplash.it/100/180" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"> -->
+
+                <h4 class="align-left text-blue">Outgoing</h4>
+                  <progress  class="align-center" max="100" value="55"></progress>
+
+
+
+                <h4 class="align-right text-blue">Imagination</h4>
+                <progress  class="align-center" max="100" value="67"></progress>
+
+
+
+                <h4 class="align-left text-blue">Modesty</h4>
+                <progress  class="align-center" max="100" value="34"></progress>
+
+
+
+
+                <h4 class="align-right text-blue">Curiosity</h4>
+                  <progress  class="align-center" max="100" value="19"></progress>
+
+
+                <div class="card-block block-btn">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-card ">profile</a>
+                  <a href="#" class="btn btn-card ">Chat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!-- End Card Flip -->
+      </div>
+
+<div class="col-sm-6 col-lg-4">
+            <!-- Card Flip -->
+        <div class="card-flip">
+          <div class="flip">
+            <div class="front">
+              <!-- front content -->
+              <div class="card text-center padded">
+                <!-- <img class="card-img-top" src="https://unsplash.it/100/180" alt="100%x180" style="height: 180px; width: 100%; display: block;" > -->
+
+                <div class="avatar-container p-55">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+                </div><!--.avatar-container-->
+
+                <div class="card-block">
+                  <h4 class="card-title">username</h4>
+                  <p class="card-text">Iam blabala and the reason why you should talk to me is that im really good  kfjgfregfoewh oirehoihwrgphrg oeirhfoiher h eroifvh eroiv hfoerih von oeruv oeruv ouenur v ni nberiuov iuebrv  iuevu i rviuberv iat....</p>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star_empty.png") %>
+                  <%= image_tag("star_empty.png") %>
+                </div>
+              </div>
+            </div>
+            <div class="back">
+              <!-- back content -->
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title text-center">Username</h4>
+                  <h6 class="card-subtitle text-muted text-center">Profile analysize</h6>
+                </div>
+                <!-- <img data-src="unsplash.it/100/180" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"> -->
+
+                <h4 class="align-left text-blue">Outgoing</h4>
+                  <progress  class="align-center" max="100" value="55"></progress>
+
+
+
+                <h4 class="align-right text-blue">Imagination</h4>
+                <progress  class="align-center" max="100" value="67"></progress>
+
+
+
+                <h4 class="align-left text-blue">Modesty</h4>
+                <progress  class="align-center" max="100" value="34"></progress>
+
+
+
+
+                <h4 class="align-right text-blue">Curiosity</h4>
+                  <progress  class="align-center" max="100" value="19"></progress>
+
+
+                <div class="card-block block-btn">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-card ">profile</a>
+                  <a href="#" class="btn btn-card ">Chat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!-- End Card Flip -->
+      </div>
+
+<div class="col-sm-6 col-lg-4">
+            <!-- Card Flip -->
+        <div class="card-flip">
+          <div class="flip">
+            <div class="front">
+              <!-- front content -->
+              <div class="card text-center padded">
+                <!-- <img class="card-img-top" src="https://unsplash.it/100/180" alt="100%x180" style="height: 180px; width: 100%; display: block;" > -->
+
+                <div class="avatar-container p-55">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/_shahedk/128.jpg" alt="" class="avatar"/>
+                </div><!--.avatar-container-->
+
+                <div class="card-block">
+                  <h4 class="card-title">username</h4>
+                  <p class="card-text">Iam blabala and the reason why you should talk to me is that im really good  kfjgfregfoewh oirehoihwrgphrg oeirhfoiher h eroifvh eroiv hfoerih von oeruv oeruv ouenur v ni nberiuov iuebrv  iuevu i rviuberv iat....</p>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star.png") %>
+                  <%= image_tag("star_empty.png") %>
+                  <%= image_tag("star_empty.png") %>
+                </div>
+              </div>
+            </div>
+            <div class="back">
+              <!-- back content -->
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title text-center">Username</h4>
+                  <h6 class="card-subtitle text-muted text-center">Profile analysize</h6>
+                </div>
+                <!-- <img data-src="unsplash.it/100/180" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"> -->
+
+                <h4 class="align-left text-blue">Outgoing</h4>
+                  <progress  class="align-center" max="100" value="55"></progress>
+
+
+
+                <h4 class="align-right text-blue">Imagination</h4>
+                <progress  class="align-center" max="100" value="67"></progress>
+
+
+
+                <h4 class="align-left text-blue">Modesty</h4>
+                <progress  class="align-center" max="100" value="34"></progress>
+
+
+
+
+                <h4 class="align-right text-blue">Curiosity</h4>
+                  <progress  class="align-center" max="100" value="19"></progress>
+
+
+                <div class="card-block block-btn">
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                  <a href="#" class="btn btn-card ">profile</a>
+                  <a href="#" class="btn btn-card ">Chat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            <!-- End Card Flip -->
+      </div>
+
+
+
+
+    </div>
+  </div>
+</section>
