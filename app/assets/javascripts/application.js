@@ -13,3 +13,4 @@
 //= require bootstrap-sprockets
 //= require custom.js
 
+//= require_tree .
