@@ -17,6 +17,10 @@ class User < ApplicationRecord
   end
 
   def percentage
-    (( answers.sum_of_content / 500.0 ) * 100).to_s + "%"
+    if (( answers.sum_of_content / 500.0 ) * 100) <= 100
+      (( answers.sum_of_content / 500.0 ) * 100).to_s
+    else
+      100
+    end
   end
 end
