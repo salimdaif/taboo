@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  skip_before_action :redirect_to_questions, only: :show
+
   def show
-    @user = User.find(params[:id])
+    @answer = Answer.new
+    @user = current_user
+    # @question = Question.find(params[:question_id])
+    @question = current_user.unanswered_questions
   end
 
   def edit

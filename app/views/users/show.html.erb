@@ -1,2 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<!-- Button trigger modal -->
+    <button id="Modalbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      More Questions?
+    </button>
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+
+            <%= render 'answers/form', user: current_user, answer: Answer.new, question: @question %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<% if !current_user.answered_minimum_questions? || params[:skip] == "1" %>
+  <% content_for(:after_js) do %>
+    <script>
+      $( document ).ready(function() {
+        $('#myModal').modal({
+          backdrop: 'static',
+          keyboard: false
+        });
+
+        // $("#Modalbtn").trigger("click");
+        });
+    </script>
+  <% end %>
+<% end %>
+
+<div id="results">
+  <%= render 'answers/listing', user: current_user %>
+</div>

@@ -1,0 +1,8 @@
+<% user.questions.each do |question| %>
+  <ul>
+    <li> <%= question.content %> </li>
+    <% question.answers.each do |answer| %>
+      <li> <%= answer.content %> </li>
+    <% end %>
+  </ul>
+<%end%>
