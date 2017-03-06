@@ -1,0 +1,7 @@
+<% if @answer.errors.any? %>
+  // Render new answer form with errors
+  $('#new_answer').html("<%= j render 'answers/form', user: current_user, question: @question, answer: @answer %>");
+<% else %>
+  // Reset the form
+  $('#new_answer').html("<%= j render 'answers/form', user: current_user, question: @question, answer: Answer.new %>");
+<% end %>
