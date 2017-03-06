@@ -3,6 +3,9 @@
 
           <h2><%= question.content %></h2>
           <%= f.input :content %>
+          <div>
+            <progress max="100" value= "<%=user.percentage%>"></progress>
+          </div>
           <%= link_to "Skip", user_path(user, skip: 1), class: "btn btn-primary" %>
           <%= f.submit "Next", class: "btn btn-primary" %>
           <% if user.answered_minimum_questions? %>
