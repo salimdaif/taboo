@@ -8,7 +8,6 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     question = Question.find(params[:question_id])
     @answer.user = current_user
-    @answer.question = question
 
 
     if @answer.save
@@ -42,6 +41,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:content)
+    params.require(:answer).permit(:content, :question_id)
   end
 end

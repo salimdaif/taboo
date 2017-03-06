@@ -3,6 +3,7 @@
 
           <h2><%= question.content %></h2>
           <%= f.input :content %>
+          <%= f.input :question_id, as: :hidden, input_html: { value: question.id }  %>
           <div>
             <progress max="100" value= "<%=user.percentage%>"></progress>
           </div>
