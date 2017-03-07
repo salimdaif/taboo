@@ -45,13 +45,12 @@ class User < ApplicationRecord
                   :username => "43fa94b8-8cf7-45fc-b4bf-1f5ac7e04a3e",
                   :password => "JT1dpggnYMfR",
                   :headers => {'Content-Type' => 'text/plain;charset=utf-8'},
-                  :body => {'data-binary' => File.open("tmp/answer_user_#{self.id}.txt")}) #chage path to id file
-    byebug
-    self.insight = response.response_body
+                  :body => {'data-binary' => File.open("tmp/answer_user_#{self.id}.txt")})
+    self.insight = JSON.parse(response.response_body)
     self.save!
   end
 
-  def calculate_scores
+  def add_scores
     big_hash = {}
 
     User.where.not(id: self.id).each do |user|
@@ -59,5 +58,26 @@ class User < ApplicationRecord
     end
 
     big_hash
+  end
+
+  def calculate_score(user)
+    origin = self
+    target = user
+
+    origin_traits = {}
+
+    (0..5).to_a.each do |i|
+      origin_traits[origin.insight["personality"][0]["children"][i]["name"]] = origin.insight["personality"][0]["children"][i]["percentile"]
+    end
+
+    target_traits ={}
+
+    (0..5).to_a.each do |i|
+      target_traits[target.insight["personality"][0]["children"][i]["name"]] = target.insight["personality"][0]["children"][i]["percentile"]
+    end
+
+    score = 0
+      byebug
+    score += (target_traits["Adventurousness"] - origin_traits["Adventurousness"]).abs
   end
 end
