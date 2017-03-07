@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @answer = Answer.new
-    @user = current_user
+    # @user = current_user
+    @user = User.find(params[:id])
     # @question = Question.find(params[:question_id])
     @question = current_user.unanswered_questions
   end

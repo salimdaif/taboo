@@ -160,13 +160,12 @@ $('.testimonialslide').flexslider({
 // 		errorMessage: 'The requested content cannot be loaded. Please try again later.' // Error message when content can't be loaded
 // 	});
 
-
-	jQuery('.appear').appear();
-	jQuery(".appear").on("appear", function(data) {
-			var id = $(this).attr("id");
-			jQuery('.nav li').removeClass('active');
-			jQuery(".nav a[href='#" + id + "']").parent().addClass("active");
-		});
+	// jQuery('.appear').appear();
+	// jQuery(".appear").on("appear", function(data) {
+	// 		var id = $(this).attr("id");
+	// 		jQuery('.nav li').removeClass('active');
+	// 		jQuery(".nav a[href='#" + id + "']").parent().addClass("active");
+	// 	});
 
 		//stats
 		var runOnce = true;

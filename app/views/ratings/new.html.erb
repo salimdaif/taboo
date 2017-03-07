@@ -1,0 +1,10 @@
+<h1>Ratings#new</h1>
+<p>Find me in app/views/ratings/new.html.erb</p>
+
+<%= simple_form_for @rating do |f| %>
+  <%= f.input :review %>
+  <%= f.input :helpfulness, collection: Rating::RATING, as: :select %>
+  <%= f.input :empathy, collection: Rating::RATING, as: :select %>
+  <%= f.input :response_time, collection: Rating::RATING, as: :select %>
+  <%= f.submit "Rate confident", class: "btn btn-primary" %>
+<% end %>

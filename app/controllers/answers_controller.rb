@@ -32,10 +32,16 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     if @answer.update(answer_params)
-      redirect_to answers_path
+      redirect_to user_path(current_user)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    redirect_to user_path(current_user)
   end
 
   private

@@ -1,4 +1,7 @@
-
+<br>
+<br>
+<br>
+<% if @user == current_user %>
 <!-- Button trigger modal -->
     <button id="Modalbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       More Questions?
@@ -18,7 +21,15 @@
         </div>
       </div>
     </div>
-<% if !current_user.answered_minimum_questions? || params[:skip] == "1" %>
+<% end %>
+
+<% @user.ratings.each do |rating| %>
+  <%= rating.helpfulness %>
+  <%= rating.response_time %>
+<% end %>
+
+
+<% if (@user == current_user) && (!current_user.answered_minimum_questions? || params[:skip] == "1") %>
   <% content_for(:after_js) do %>
     <script>
       $( document ).ready(function() {
@@ -34,5 +45,6 @@
 <% end %>
 
 <div id="results">
-  <%= render 'answers/listing', user: current_user %>
+  <%= render 'answers/listing', user: @user %>
 </div>
+

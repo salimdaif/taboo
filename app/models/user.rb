@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :sent_ratings, :foreign_key => :sender_id, class_name: 'Rating'
+  has_many :ratings, :foreign_key => :recipient_id
   has_many :answers
   has_many :questions, through: :answers
   devise :database_authenticatable, :registerable,
