@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
   def index
-    @matches = User.all #for testing purposes
+    @scores_hash = current_user.calculate_scores
   end
 end

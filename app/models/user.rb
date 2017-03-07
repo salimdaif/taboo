@@ -23,4 +23,41 @@ class User < ApplicationRecord
       100
     end
   end
+
+
+  def init_answers
+    File.open("tmp/answer_user_#{self.id}.txt","w") do |line|
+
+      questions.each do |question|
+        line.puts question.content
+        question.answers.each do |answer|
+          line.puts answer.content
+        end
+      end
+    end
+  end
+
+  def get_insight
+
+    init_answers
+
+    response = Typhoeus::Request.post("https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2016-10-20",
+                  :username => "43fa94b8-8cf7-45fc-b4bf-1f5ac7e04a3e",
+                  :password => "JT1dpggnYMfR",
+                  :headers => {'Content-Type' => 'text/plain;charset=utf-8'},
+                  :body => {'data-binary' => File.open("tmp/answer_user_#{self.id}.txt")}) #chage path to id file
+    byebug
+    self.insight = response.response_body
+    self.save!
+  end
+
+  def calculate_scores
+    big_hash = {}
+
+    User.where.not(id: self.id).each do |user|
+      big_hash[user.id.to_sym] = current_user.calculate_score(user)
+    end
+
+    big_hash
+  end
 end

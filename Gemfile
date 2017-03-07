@@ -11,6 +11,8 @@ gem 'devise'
 
 gem 'coffee-rails'
 
+gem 'typhoeus'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
