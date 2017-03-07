@@ -1,8 +1,10 @@
-<% user.questions.each do |question| %>
-  <ul>
-    <li> <%= question.content %> </li>
-    <% question.answers.each do |answer| %>
-      <li> <%= answer.content %> </li>
-    <% end %>
+<% user.answers.order("created_at DESC").each do |answer| %>
+  <ul class="list-inline">
+    <li> <%= answer.question.content %> </li>
+    <%# question.answers.each do |answer| %>
+    <li> <%= answer.content %> </li>
+    <li> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>'.html_safe, edit_answer_path(answer)%> </li>
+    <li> <%=link_to '<i class="fa fa-trash fa-lg" aria-hidden="true"></i>'.html_safe, answer_path(answer), method: :delete, data: {confirm: "Are you sure?"}, class: "btn-small" %> </li>
   </ul>
+    <%# end %>
 <%end%>
