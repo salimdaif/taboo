@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get 'ratings/create'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users/registrations' }
   root to: 'pages#home'
 
   resources :users, only: [:show, :edit, :update] do
+    # delete 'deactivate', on: :member
     resources :questions, only: [:show] do
       resources :answers, only: [:new, :create]
     end
