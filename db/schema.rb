@@ -25,25 +25,6 @@ ActiveRecord::Schema.define(version: 20170307221208) do
     t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
-    t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-  end
-
   create_table "questions", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
@@ -85,14 +66,12 @@ ActiveRecord::Schema.define(version: 20170307221208) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false, null: false
-    t.json     "insight"
     t.datetime "deleted_at"
+    t.json     "insight"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
 end
