@@ -8,8 +8,11 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'devise'
+gem "pundit"
 
 gem 'coffee-rails'
+
+gem 'typhoeus'
 
 gem 'sass-rails'
 gem 'jquery-rails'

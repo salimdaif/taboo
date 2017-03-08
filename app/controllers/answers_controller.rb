@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
   skip_before_action :redirect_to_questions, only: :create
-
   def new
   end
 
@@ -27,15 +26,24 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find(params[:id])
+    authorize @answer, :update?
   end
 
   def update
     @answer = Answer.find(params[:id])
+    authorize @answer
     if @answer.update(answer_params)
-      redirect_to answers_path
+      redirect_to user_path(current_user)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @answer = Answer.find(params[:id])
+    authorize @answer
+    @answer.destroy
+    redirect_to user_path(current_user)
   end
 
   private
