@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :sent_ratings, :foreign_key => :sender_id, class_name: 'Rating'
+  has_many :ratings, :foreign_key => :recipient_id
   has_many :answers
   has_many :questions, through: :answers
   devise :database_authenticatable, :registerable,
@@ -23,6 +25,7 @@ class User < ApplicationRecord
       100
     end
   end
+
 
 
   def init_answers
@@ -124,7 +127,21 @@ class User < ApplicationRecord
     score += 1 - (target_traits["Self-consciousness"] - origin_traits["Self-consciousness"]).abs
     score += 1 - (target_traits["Susceptible to stress"] - origin_traits["Susceptible to stress"]).abs
 
-byebug
     score = (score/29)*100
+
+  # instead of deleting, indicate the user requested a delete & timestamp it
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  # ensure user account is active
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  # provide a custom message for a deleted account
+  def inactive_message
+    !deleted_at ? super : :deleted_account
+
   end
 end
