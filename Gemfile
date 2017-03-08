@@ -13,6 +13,7 @@ gem "pundit"
 gem 'coffee-rails'
 
 gem 'typhoeus'
+gem 'pusher'
 
 gem 'sass-rails'
 gem 'jquery-rails'
