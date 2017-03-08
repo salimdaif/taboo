@@ -128,7 +128,7 @@ class User < ApplicationRecord
     score += 1 - (target_traits["Susceptible to stress"] - origin_traits["Susceptible to stress"]).abs
 
     score = (score/29)*100
-
+  end
   # instead of deleting, indicate the user requested a delete & timestamp it
   def soft_delete
     update_attribute(:deleted_at, Time.current)
