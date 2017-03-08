@@ -1,0 +1,5 @@
+class AddInsightToUsers < ActiveRecord::Migration[5.0]
+  def change
+    add_column :users, :insight, :json
+  end
+end
