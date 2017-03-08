@@ -30,4 +30,5 @@ Question.create(content: "What is most important in life?")
 Question.create(content: "What makes your heart beat fast?")
 Question.create(content: "What is your biggest success?")
 Question.create(content: "What is your biggest faillure?")
+Question.create(content: "When was the last time you spoke to a stranger?")
 
