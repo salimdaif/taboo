@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :redirect_to_questions, only: :show
 
 
-require 'typhoeus'
-require 'json'
+
 
   def show
     @answer = Answer.new
