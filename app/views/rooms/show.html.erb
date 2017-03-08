@@ -1,2 +1,56 @@
 <h1>Rooms#show</h1>
 <p>Find me in app/views/rooms/show.html.erb</p>
+
+
+<div class="message-list">
+  <h4> Hello, <%= current_user.username %></h4>
+  <ul>
+
+  </ul>
+</div>
+
+
+
+<%= form_for :message, html: {class: 'new-chat'} do |f| %>
+
+  <%= text_area_tag :new_message %>
+  <%= submit_tag :submit %>
+<% end %>
+
+
+
+
+
+
+ <%= content_for(:after_js) do  %>
+
+  <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('3df64582bb7a34201be2', {
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe("private-room-<%= @room.id %>");
+    channel.bind('client-new-message', function(data) {
+      // alert(data.message);
+      $(".message-list").append("<li>"+data.message+"</li>");
+    });
+  </script>
+
+
+  <!-- Sender -->
+  <script type="text/javascript">
+    $('form.new-chat').click('submit', function(event){
+      event.preventDefault();
+
+            var text = $('textarea#new_message').val();
+
+      var channel = pusher.subscribe("private-room-<%= @room.id %>");
+      channel.trigger('client-new-message', {message: text})
+    })
+  </script>
+<% end %>

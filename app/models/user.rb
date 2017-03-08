@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  require 'typhoeus'
+  require 'json'
   has_many :sent_ratings, :foreign_key => :sender_id, class_name: 'Rating'
   has_many :ratings, :foreign_key => :recipient_id
   has_many :answers
@@ -58,7 +60,7 @@ class User < ApplicationRecord
 
     (0..4).to_a.each do |i|
       (0..5).to_a.each do |j|
-        insight_hash[self.insight["personality"][i]["children"][j]["name"]] = self.insight["personality"][0]["children"][i]["percentile"]
+        insight_hash[self.insight["personality"][i]["children"][j]["name"]] = self.insight["personality"][i]["children"][j]["percentile"]
       end
     end
 
@@ -83,7 +85,7 @@ class User < ApplicationRecord
 
     (0..4).to_a.each do |i|
       (0..5).to_a.each do |j|
-        origin_traits[origin.insight["personality"][i]["children"][j]["name"]] = origin.insight["personality"][0]["children"][i]["percentile"]
+        origin_traits[origin.insight["personality"][i]["children"][j]["name"]] = origin.insight["personality"][i]["children"][j]["percentile"]
       end
     end
 
@@ -91,7 +93,7 @@ class User < ApplicationRecord
 
     (0..4).to_a.each do |i|
       (0..5).to_a.each do |j|
-        target_traits[target.insight["personality"][i]["children"][j]["name"]] = target.insight["personality"][0]["children"][i]["percentile"]
+        target_traits[target.insight["personality"][i]["children"][j]["name"]] = target.insight["personality"][i]["children"][j]["percentile"]
       end
     end
 

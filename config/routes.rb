@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'pusher/auth'
+
   get 'ratings/new'
 
   get 'ratings/create'
+
+  post 'pusher/auth', to: 'pusher#auth'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # devise_for :users
@@ -16,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, only: [:new, :create, :show]
+  resources :rooms, only: [:create, :show]
   resources :questions, only: [:index, :new, :create, :edit, :update] #pundit
   resources :matches, only: [:index]
   resources :answers, only: [:edit, :update, :destroy]

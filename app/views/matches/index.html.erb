@@ -35,6 +35,12 @@
 
 </script>
 <% end %>
+<% @user.each do |user| %>
+
+<%= user.username %>
+
+ <%= link_to "get a room",rooms_path(recipient: user.id), method: :post %>
+<% end %>
 
 <section>
   <div class="container">
@@ -103,6 +109,13 @@
         </div>
             <!-- End Card Flip -->
       </div>
+
+
+
+
+
+
+
 
 
       <div class="col-sm-6 col-lg-4">
