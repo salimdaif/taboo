@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'pusher/auth'
+
   get 'ratings/new'
 
   get 'ratings/create'
+
+  post 'pusher/auth', to: 'pusher#auth'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # devise_for :users
