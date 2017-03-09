@@ -35,6 +35,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def calculate_insight
+    @user = User.find(params[:id])
+    @user.get_insight
+    redirect_to user_path(@user)
+  end
+
   private
 
   def user_params

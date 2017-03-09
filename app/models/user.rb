@@ -57,48 +57,55 @@ class User < ApplicationRecord
 
   def print_insight
     insight_hash = {}
-
-    (0..4).to_a.each do |i|
-      (0..5).to_a.each do |j|
-        insight_hash[self.insight["personality"][i]["children"][j]["name"]] = self.insight["personality"][i]["children"][j]["percentile"]
+    unless self.insight.nil?
+      unless self.insight["personality"].nil?
+        (0..4).to_a.each do |i|
+          (0..5).to_a.each do |j|
+            insight_hash[self.insight["personality"][i]["children"][j]["name"]] = (self.insight["personality"][i]["children"][j]["percentile"] * 100).round
+          end
+        end
       end
     end
-
     insight_hash
   end
 
   def add_scores
-    big_hash = {}
+    matches_hash = {}
 
     User.where.not(id: self.id).each do |user|
-      big_hash[user.id.to_sym] = current_user.calculate_score(user)
+      matches_hash[user.id] = calculate_score(user)
     end
 
-    big_hash
+    matches_hash
   end
 
   def calculate_score(user)
     origin = self
     target = user
+    score = 0.0
 
     origin_traits = {}
 
-    (0..4).to_a.each do |i|
-      (0..5).to_a.each do |j|
-        origin_traits[origin.insight["personality"][i]["children"][j]["name"]] = origin.insight["personality"][i]["children"][j]["percentile"]
+   unless target.insight.nil?
+    unless target.insight["personality"].nil?
+      (0..4).to_a.each do |i|
+        (0..5).to_a.each do |j|
+          origin_traits[origin.insight["personality"][i]["children"][j]["name"]] = origin.insight["personality"][i]["children"][j]["percentile"]
+        end
       end
     end
-
+  end
     target_traits ={}
 
+
+  unless target.insight.nil?
+    unless target.insight["personality"].nil?
     (0..4).to_a.each do |i|
       (0..5).to_a.each do |j|
         target_traits[target.insight["personality"][i]["children"][j]["name"]] = target.insight["personality"][i]["children"][j]["percentile"]
       end
     end
 
-
-    score = 0.0
     score += 1 - (target_traits["Adventurousness"] - origin_traits["Adventurousness"]).abs
     score += 1 - (target_traits["Artistic interests"] - origin_traits["Artistic interests"]).abs
     score += 1 - (target_traits["Emotionality"] - origin_traits["Emotionality"]).abs
@@ -130,6 +137,14 @@ class User < ApplicationRecord
     score += 1 - (target_traits["Susceptible to stress"] - origin_traits["Susceptible to stress"]).abs
 
     score = (score/29)*100
+    score = score.round
+
+    score
+
+    end
+  end
+
+    score
   end
   # instead of deleting, indicate the user requested a delete & timestamp it
   def soft_delete
