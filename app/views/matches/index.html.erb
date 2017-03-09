@@ -1,39 +1,19 @@
 
 
-<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
 
-<% content_for(:after_js) do %>
-<script>
- // document.querySelector(".card-flip").classList.toggle("flip");
+<!-- <style>
+  body {
 
-
-//  Holder.addTheme('gray', {
-//   bg: '#777',
-//   fg: 'rgba(255,255,255,.75)',
-//   font: 'Helvetica',
-//   fontweight: 'normal'
-// });
-
-
-
-// $('.avatar-container').on('click',function(){
-
-//   if ($(this).find('.info').length <= 0) {
-//     $(this).append('<div class="info"><div class="info-inner"></div></div>');
-//   }
-
-//   var $info = $(this).find('.info'),
-//       $inner= $(this).find('.info-inner'),
-//       $p    = $(this).attr("class").match(/p-\w+/).toString().substring(2);
-
-//   $inner.text($p+'%');
-//   $info.toggleClass('js-active');
-// });
-
-// $('.avatar-container').last().trigger('click');
-
-</script>
-<% end %>
+background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image:
+ -webkit-linear-gradient(top,
+           rgba(255, 255, 255, .25),
+           rgba(0, 0, 0, .25)),
+        -webkit-linear-gradient(left, #8668A8, #473D8A)
+        ;}
+</style> -->
 
 
 <section>
@@ -64,18 +44,19 @@
                 </div><!--.avatar-container-->
 
                 <div class="card-block">
-                  <h4 class="card-title"><%= user.username %></h4>
-                  <h2><%= score %>%</h2>
+                  <h3 class="text-it text-blue"><%= user.username.capitalize %></h3>
+
 
                   <p class="card-text"><!-- Iam blabala and the reason why you should talk to me is that im really good  kfjgfregfoewh oirehoihwrgphrg oeirhfoiher h eroifvh eroiv hfoerih von oeruv oeruv ouenur v ni nberiuov iuebrv  iuevu i rviuberv iat.... -->
 
 
                   </p>
-                  <%= image_tag("star.png") %>
-                  <%= image_tag("star.png") %>
-                  <%= image_tag("star.png") %>
-                  <%= image_tag("star_empty.png") %>
-                  <%= image_tag("star_empty.png") %>
+                  <%# image_tag("star.png") %>
+                  <%# image_tag("star.png") %>
+                  <%# image_tag("star.png") %>
+                  <%# image_tag("star_empty.png") %>
+                  <%# image_tag("star_empty.png") %>
+                  <h3 class="text-blue"><%= score %> %</h3>
                 </div>
               </div>
             </div>
@@ -84,7 +65,7 @@
               <div class="card">
                 <div class="card-block">
                   <!-- <h4 class="card-title text-center">Username</h4> -->
-                  <h6 class="card-subtitle text-muted text-center">Profile analysize</h6>
+                  <!-- <h6 class="card-subtitle text-muted text-center">Profile analysize</h6> -->
                 </div>
                 <!-- <img data-src="unsplash.it/100/180" alt="Image [100%x180]" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"> -->
 
