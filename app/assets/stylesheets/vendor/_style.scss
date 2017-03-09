@@ -1048,12 +1048,13 @@ Parallax
 ============================= */
 
 #parallax1{
-	background-image: url(p1.jpg);
-    background-position: bottom;
-    background-repeat: no-repeat;
-    display:block;
-    position:relative;
-    z-index:120;
+  background-image: image-url('p1.jpg');
+  background-image: url(p1.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  display:block;
+  position:relative;
+  z-index:120;
 }
 
 #parallax1:after {
@@ -1071,12 +1072,12 @@ Parallax
 
 
 #parallax2{
-	background-image: url(p2.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    display:block;
-    position:relative;
-    z-index:120;
+  background-image: image-url('p2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  display:block;
+  position:relative;
+  z-index:120;
 }
 
 #parallax2:after  {
@@ -1092,12 +1093,12 @@ Parallax
 }
 
 #parallax3{
-	background-image: url(p3.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    display:block;
-    position:relative;
-    z-index:120;
+  background-image: image-url('p3.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  display:block;
+  position:relative;
+  z-index:120;
 }
 
 #parallax3:after  {
