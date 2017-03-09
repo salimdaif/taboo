@@ -9,13 +9,39 @@
   padding-top: 50px;
 }
 
-
 .padded {
-  padding-top: 5em;
-  padding-bottom: 5em;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
+// .padded {
+//   padding-top: 5em;
+//   padding-bottom: 5em;
+// }
+
+// Margins
+.mg-left-20 { margin-left:20px; }
+
+
+// Floats
+
+.float-none  { float: none; }
+.float-left  { float: left; }
+.float-right { float: right; }
+
+.clear-none  { clear: none; }
+.clear-left  { clear: left; }
+.clear-right { clear: right; }
+.clear-both  { clear: both; }
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
 
 // Backgrounds
 .bg-black {
