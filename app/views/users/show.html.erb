@@ -46,5 +46,9 @@
 <div id="results">
   <%= render 'answers/listing', user: @user %>
 </div>
-</div>
+
+
+<%= @user.print_insight %>
+
+<%= link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
 
