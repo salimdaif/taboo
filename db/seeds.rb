@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Question.destroy_all
+Question.destroy_all
 
 Question.create(content: "What scares you the most?")
 Question.create(content: "What would you do if you had 24h left to live?")
