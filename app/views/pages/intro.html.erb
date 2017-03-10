@@ -1,0 +1,74 @@
+<div>
+<div id= "intro1" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login text-center">
+        <h2>Welcome to Taboo</h2>
+          <div class="form-inputs">
+            <h5> Step 1: Answer Fundamental Questions! </h5>
+            <%= image_tag "intro(1).png" %>
+            <p>   Take your time, look within and get on the road of better knowing yourself by responding to a few <strong> fundamental </strong> questions we too often forget to ask ourselves. Knowing one's self and being genuine is the first step to greater self-regard and conscioussness. <br> <strong> Be fearlessly authentic! </strong> </p>
+          </div>
+            <div class="form-actions">
+            <button class="btn btn-primary" onclick="openIntro('intro2')"> Next >></button>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+<div id= "intro2" class="container" style="display:none">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login text-center">
+        <h2>Welcome to Taboo</h2>
+          <div class="form-inputs">
+            <h5> Step 2: Browse a Curated List of Confidents! </h5>
+            <%= image_tag "intro(2).png" %>
+            <p> Based on your answers, our algorithm will give you better insight on your personality as well as provide you with a curated list of sincere individuals who fit you; which you can browse and discover through what really makes us who we are: our passions, fears, values, dreams, experiences.. <br> <strong> No names. No pictures. No Prejudice. </strong> </p>
+          </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" onclick="openIntro('intro3')"> Next >></button>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+<div id="intro3" class="container" style="display:none">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <div class="form-login text-center">
+        <h2>Welcome to Taboo</h2>
+          <div class="form-inputs">
+            <h5> Step 3: Converse! </h5>
+            <%= image_tag "intro(1).png" %>
+            <p> Share a wholehearted moment with someone who cares by starting a conversation on our secure network. Open yourself and touch other's lives through one on one conversations where all that is said is deleted. <br> <strong> You are not alone! </strong> </p>
+          </div>
+            <div class="form-actions">
+              <%= link_to 'START NOW >>', user_path(current_user, seen_intro: true), class:"btn btn-primary" %>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+function openIntro(introName) {
+    var i;
+    var x = document.getElementsByClassName("container");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    document.getElementById(introName).style.display = "block";
+}
+</script>

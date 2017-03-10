@@ -10,10 +10,9 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-
     <%= render 'users/banner_animation' %>
 
-    <%= render 'shared/flashes' %>
+    <%#= render 'shared/flashes' %>
 
     <%= render 'shared/navbar' %>
 
@@ -22,6 +21,5 @@
     <%= javascript_include_tag 'application' %>
 
     <%= yield(:after_js) %>
-
   </body>
 </html>
