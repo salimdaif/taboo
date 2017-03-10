@@ -2,13 +2,14 @@ class PusherController < ApplicationController
   skip_before_action :verify_authenticity_token
 
 
-  def auth
-
+   def auth
     if current_user
-      response = Pusher.authenticate(params[:channel_name], params[:socket_id])
-      render json: response
+      auth = Pusher.authenticate(params[:channel_name], params[:socket_id],
+        user_id: current_user.id # => required
+      )
+      render json: auth
     else
-      render text: 'Forbidden', status: '403'
+      render text: "Not authorized", status: '403'
     end
   end
 end
