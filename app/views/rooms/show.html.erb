@@ -1,6 +1,3 @@
-
-
-
 <div class="main_section">
    <div class="container">
       <div class="chat_container">
@@ -148,7 +145,7 @@
          <div class="col-sm-9 message_section">
      <div class="row">
      <div class="new_message_head">
-     <div class="pull-left"><button><i class="fa fa-plus-square-o hidden" aria-hidden="true"></i> Jacky Boy</button></div><div class="pull-right"><div class="dropdown">
+     <div class="pull-left"><button><i class="fa fa-plus-square-o hidden" aria-hidden="true"></i><%= @target.username %></button></div><div class="pull-right"><div class="dropdown">
   <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fa fa-cogs" aria-hidden="true"></i>  Settings
     <span class="caret"></span>
@@ -161,7 +158,7 @@
 </div></div>
      </div><!--new_message_head-->
 
-     <div class="chat_area bg-white">
+     <div id ="meaasges-div" class="chat_area bg-white">
      <ul id = "messages-box" class="list-unstyled">
      <li class="left clearfix">
                      <!-- <span class="chat-img1 pull-left">
@@ -228,31 +225,6 @@
 
 
 
-
-
-
-
-<div class="container hidden">
-<div class="message-list">
-  <h4> Hello, <%= current_user.username %></h4>
-  <ul>
-
-  </ul>
-</div>
-
-
-
-<%= form_for :message, html: {class: 'new-chat'} do |f| %>
-
-  <%= text_area_tag :new_message %>
-  <%= submit_tag :submit %>
-<% end %>
-
-
-
-
-
-
  <%= content_for(:after_js) do  %>
 
   <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
@@ -270,32 +242,49 @@
       // alert(data.message);
       $(".message-list").append("<li>"+data.message+"</li>");
 
-      var $chatdiv = $("<div></div>").addClass("chat-body1 clearfix").append("<p>"+ data.message+"</p>"),
-      $listdiv = $("<li></li>").addClass( "left clearfix" ).append($chatdiv);
+      var $imagediv = $("<img></img>").attr({
+                      alt: "User Avatar",
+                      src: "<%= @target.avatar %>"
+                    }).addClass("img-circle"),
+            $spanct = $("<span></span>").addClass("chat-img1 pull-right").append($imagediv),
+          $chatdiv = $("<div></div>").addClass("chat-body1 clearfix").append("<p>"+ data.message+"</p>"),
+          $listdiv = $("<li></li>").addClass( "left clearfix" ).append($spanct, $chatdiv);
 
       $("#messages-box").append($listdiv );
+      $("#meaasges-div").animate({ scrollTop: $('#meaasges-div').prop("scrollHeight")}, 1000);
     });
 
 channel.bind('pusher:member_added', function() {
-  alert("placeholder joinde the conversation");
-  dnid.click
-
+  // alert("placeholder joinde the conversation");
+  // dnid.click
 });
+
+
+
 
   <!-- Sender -->
 
-    $('#send').click( function(event){
+    $('#send').click(function(event){
       event.preventDefault();
 
-            var text = $('textarea#new_message2').val();
+       $("#meaasges-div").animate({ scrollTop: $('#meaasges-div').prop("scrollHeight")}, 1000);
 
+      var text = $('textarea#new_message2').val();
       var channel = pusher.subscribe("presence-room-<%= @room.id %>");
       channel.trigger('client-new-message', {message: text})
 
-      var $chatdiv = $("<div></div>").addClass("chat-body1 clearfix").append("<p>"+text+"</p>"),
-      $listdiv = $("<li></li>").addClass( "left clearfix" ).append($chatdiv);
+
+        var
+            $imagediv = $("<img></img>").attr({
+                      alt: "User Avatar",
+                      src: "<%= @user.avatar %>"
+                    }).addClass("img-circle"),
+            $spanct = $("<span></span>").addClass("chat-img1 pull-left").append($imagediv),
+          $chatdiv = $("<div></div>").addClass("chat-body1 clearfix").append("<p>"+text+"</p>"),
+          $listdiv = $("<li></li>").addClass( "left clearfix" ).append($spanct ,$chatdiv);
 
       $("#messages-box").append($listdiv );
+      $('textarea#new_message2').val("");
     })
   </script>
 <% end %>
