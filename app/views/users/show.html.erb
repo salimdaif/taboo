@@ -85,7 +85,6 @@
   </div>
 </div>
 
-<div class="container">
 <% if @user == current_user %>
     <%= link_to "Deactivate account", user_registration_path, method: :delete %>
 <!-- Button trigger modal -->
@@ -97,7 +96,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Questionnaire</h4>
           </div>
           <div class="modal-body">
 
@@ -138,4 +137,3 @@
 <%= @user.print_insight %>
 
 <%= link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
-

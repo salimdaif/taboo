@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  skip_before_action :redirect_to_questions, only: :show
+  skip_before_action :redirect_to_custom_path, only: :show
 
   def show
+    if params[:seen_intro].present?
+      User.find(current_user.id).update(seen_intro: true)
+    end
+
     @answer = Answer.new
     # @user = current_user
     @user = User.find(params[:id])
