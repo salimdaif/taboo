@@ -6,12 +6,14 @@ class RoomsController < ApplicationController
     if @user = User.find(params[:recipient])
 
       @room = Room.new(sender_id: current_user.id, recipient_id: params[:recipient])
-
+      notify(@user)
       redirect_to room_path(@room) if @room.save
     end
+  end
 
 
-
+  def notify(user)
+    user.notification
   end
 
   def show

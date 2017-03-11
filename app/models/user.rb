@@ -143,9 +143,16 @@ class User < ApplicationRecord
 
     end
   end
-
     score
   end
+
+
+def notification
+   respond_to do |format|
+    format.html {render "notification_popup"}
+   end
+end
+
   # instead of deleting, indicate the user requested a delete & timestamp it
   def soft_delete
     update_attribute(:deleted_at, Time.current)
