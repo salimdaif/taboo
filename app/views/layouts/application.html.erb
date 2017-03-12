@@ -10,7 +10,8 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'users/banner_animation' %>
+
+    <%= render 'users/banner_animation' if current_page? (root_path) %>
 
     <%#= render 'shared/flashes' %>
 
