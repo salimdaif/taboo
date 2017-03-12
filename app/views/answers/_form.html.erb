@@ -1,7 +1,7 @@
 
         <%= simple_form_for([user, question, answer], remote: true) do |f| %>
 
-          <h2><%= question.content %></h2>
+          <h4><%= question.content %></h4>
           <%= f.input :content, label: false, placeholder: "type your answer"%>
           <%= f.input :question_id, as: :hidden, input_html: { value: question.id }  %>
           <div>
