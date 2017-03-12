@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  skip_before_action :redirect_to_questions, only: :create
+  skip_before_action :redirect_to_custom_path, only: :create
   def new
   end
 

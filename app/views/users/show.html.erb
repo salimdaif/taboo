@@ -71,9 +71,6 @@
     </div>
   </div>
 
-
-
-
   <div class="tab-content hidden" id="conversation">
     <p>Contact me if you want.</p>
   </div>
@@ -130,6 +127,7 @@
 
     <%= @user.print_insight %>
 
-    <%= link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
 
+    <%= link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
 </div>
+

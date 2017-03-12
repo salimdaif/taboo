@@ -13,7 +13,7 @@
 
     <%= render 'users/banner_animation' if current_page? (root_path) %>
 
-    <%= render 'shared/flashes' %>
+    <%#= render 'shared/flashes' %>
 
     <%= render 'shared/navbar' %>
 
@@ -22,6 +22,5 @@
     <%= javascript_include_tag 'application' %>
 
     <%= yield(:after_js) %>
-
   </body>
 </html>
