@@ -2,94 +2,143 @@
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
     <div class="profile-header-infos">
-      <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "profile-picture"%>
-      <h1><%= current_user.username %></h1>
-      <h2>member since <%= current_user.created_at.strftime("%Y") %></h2>
+      <%= image_tag "http://i.pravatar.cc/150?u=#{@user.email}", class: "profile-picture"%>
+      <h1><%= @user.username %></h1>
+      <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
     </div>
     <div class="tabs">
-      <a class="tab active" data-target="#personality">
-        <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
-      </a>
-      <a class="tab" data-target="#questionnaire">
+      <a class="tab active" data-target="#questionnaire">
         <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
       </a>
-      <a class="tab" data-target="#conversation">
-        <h3><%= image_tag "003-chat.svg", class: "tab-icon"%>Converse now!</h3>
+      <a class="tab" data-target="#personality">
+        <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
       </a>
+      <% if @user != current_user %>
+        <%= link_to rooms_path(recipient: @user.id), method: :post, class: "tab" do %>
+          <h3><%= image_tag "003-chat.svg", class: "tab-icon" %>Converse now!</h3>
+        <% end %>
+      <% else %>
+      <a class="tab" data-target="#matches">
+        <h3> <%= image_tag"003-chat.svg", class: "tab-icon" %> Matches </h3>
+      </a>
+      <% end %>
     </div>
   </div>
 </div>
 
 <div class="container text-center">
-  <div class="tab-content" id="personality">
-    <p>This is my bio.</p>
+      <div class="tab-content hidden" id="personality">
+        <div class="row">
+          <div class="col-xs-6">
+            <h5 class="align-center text-blue">Outgoing</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Outgoing"] %>"></progress>
+
+              <h5 class="align-center text-blue">Emotionality</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Emotionality"] %>"></progress>
+
+              <h5 class="align-center text-blue">Self-efficacy</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Self-efficacy"] %>"></progress>
+
+              <h5 class="align-center text-blue">Fiery</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Fiery"] %>"></progress>
+
+               <h5 class="align-center text-blue">Openness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Openness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Sympathy</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Sympathy"] %>"></progress>
+
+              <h5 class="align-center text-blue">Agreeableness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Agreeableness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Adventurousness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Adventurousness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Artistic interests</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Artistic interests"] %>"></progress>
+
+              <h5 class="align-center text-blue">Cheerfulness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cheerfulness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Intellect</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Intellect"] %>"></progress>
+
+              <h5 class="align-center text-blue">Conscientiousness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Conscientiousness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Achievement striving</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Achievement striving"] %>"></progress>
+
+              <h5 class="align-center text-blue">Prone to worry</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Prone to worry"] %>"></progress>
+
+          </div>
+          <div class="col-xs-6">
+
+              <h5 class="align-center text-blue">Orderliness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Orderliness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Cautiousness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cautiousness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Self-discipline</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Self-discipline"] %>"></progress>
+
+              <h5 class="align-center text-blue">Extraversion</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Extraversion"] %>"></progress>
+
+              <h5 class="align-center text-blue">Melancholy</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Melancholy"] %>"></progress>
+
+              <h5 class="align-center text-blue">Assertiveness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Assertiveness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Cheerfulness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cheerfulness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Excitement-seeking</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Excitement-seeking"] %>"></progress>
+
+              <h5 class="align-center text-blue">Imagination</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Imagination"] %>"></progress>
+
+              <h5 class="align-center text-blue">Gregariousness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Gregariousness"] %>"></progress>
+
+              <h5 class="align-center text-blue">Altruism</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Altruism"] %>"></progress>
+
+              <h5 class="align-center text-blue">Cooperation</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cooperation"] %>"></progress>
+
+              <h5 class="align-center text-blue">Uncompromising</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Uncompromising"] %>"></progress>
+
+              <h5 class="align-center text-blue">Authority-challenging</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Authority-challenging"] %>"></progress>
+      </div>
+    </div>
   </div>
-  <div class="tab-content hidden" id="questionnaire">
 
-    <div class="row qa-box">
-
-      <div class="col-xs-1"></div>
-      <!-- Insert here the question -->
-      <div class="col-xs-11"><h1>Question 1? </h1></div> <!-- Insert here the question -->
-
-      <div class="col-xs-1 qa-btn">
-        <ul>
-          <li><%= link_to (image_tag "001-edit.svg"), root_path %></li> <!-- Insert here the links to edit -->
-          <li><%= link_to (image_tag "002-trash.svg"), root_path%></li> <!-- Insert here the links to delete -->
-        </ul>
-      </div>
-      <div class="col-xs-11"> <!-- Insert here the answer -->
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.</p>
-      </div>
+    <div class="tab-content" id="questionnaire">
+      <%= render 'answers/listing', user: @user %>
     </div>
 
-    <div class="row qa-link">
-      <div class="col-xs-9"></div>
-      <div class="col-xs-3"><%= link_to "Click here to answer more questions", root_path %></div>
-    </div>
-
-    <div class="row qa-box">
-
-      <div class="col-xs-1"></div>
-      <!-- Insert here the question -->
-      <div class="col-xs-11"><h1>Question 2? </h1></div> <!-- Insert here the question -->
-
-      <div class="col-xs-1 qa-btn">
-        <ul>
-          <li><%= link_to (image_tag "001-edit.svg"), root_path %></li> <!-- Insert here the links to edit -->
-          <li><%= link_to (image_tag "002-trash.svg"), root_path%></li> <!-- Insert here the links to delete -->
-        </ul>
-      </div>
-      <div class="col-xs-11"> <!-- Insert here the answer -->
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn’t been rewritten, then they are still using her.</p>
-      </div>
-    </div>
-
-    <div class="row qa-link">
-      <div class="col-xs-9"></div>
-      <div class="col-xs-3"><%= link_to "Click here to answer more questions", root_path %></div>
-    </div>
-  </div>
-
-  <div class="tab-content hidden" id="conversation">
-    <p>Contact me if you want.</p>
+  <div class="tab-content hidden" id="matches">
+    <p> <%= render 'matches/matches', user: current_user %> </p>
   </div>
 </div>
 
 
-<div class="container hidden">
     <% if @user == current_user %>
-        <%= link_to "Deactivate account", user_registration_path, method: :delete %>
+        <%# link_to "Deactivate account", user_registration_path, method: :delete %>
     <!-- Button trigger modal -->
-        <button id="Modalbtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          More Questions?
-        </button>
     <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Questionnaire</h4>
               </div>
               <div class="modal-body">
                 <%= render 'answers/form', user: current_user, answer: Answer.new, question: @question %>
@@ -98,12 +147,6 @@
           </div>
         </div>
     <% end %>
-
-    <% @user.ratings.each do |rating| %>
-      <%= rating.helpfulness %>
-      <%= rating.response_time %>
-    <% end %>
-
 
     <% if (@user == current_user) && (!current_user.answered_minimum_questions? || params[:skip] == "1") %>
       <% content_for(:after_js) do %>
@@ -120,14 +163,9 @@
       <% end %>
     <% end %>
 
-    <div id="results">
-      <%= render 'answers/listing', user: @user %>
-    </div>
+
+    <%# @user.print_insight %>
 
 
-    <%= @user.print_insight %>
-
-
-    <%= link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
-</div>
+    <%# link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
 
