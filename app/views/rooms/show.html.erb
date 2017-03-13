@@ -1,7 +1,7 @@
-
-<div id="online" style="display: none" ><h2>your interlocuter is in this room</h2></div>
-<div id="away"><h2>your interlocuter is away</h2></div>
-
+<!--
+<div id="online" style="display: none" ><h2>your interlocuter is in this room</h2><i class="fa fa-circle" aria-hidden="true" style="color: green "></i></div>
+<div id="away"><h2>your interlocuter is away</h2><i class="fa fa-circle" aria-hidden="true" style="color: red"></i></div>
+ -->
 
 
 <div class="main_section">
@@ -150,8 +150,16 @@
 
          <div class="col-sm-9 message_section">
      <div class="row">
+
      <div class="new_message_head">
-     <div class="pull-left"><button><i class="fa fa-plus-square-o hidden" aria-hidden="true"></i><%= @target.username %></button></div><div class="pull-right"><div class="dropdown">
+
+     <div class="pull-left"><i class="fa fa-plus-square-o hidden" aria-hidden="true"></i>
+     <div id="online" style="display: none" ><i class="fa fa-circle" aria-hidden="true" style="color: green "></i>  <%= @target.username %></div>
+     <div id="away"><i class="fa fa-circle" aria-hidden="true" style="color: red"></i>  <%= @target.username %></div>
+
+
+
+     </div><div class="pull-right"><div class="dropdown">
   <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fa fa-cogs" aria-hidden="true"></i>  Settings
     <span class="caret"></span>
@@ -217,7 +225,9 @@
                      </div> -->
                   </li>
      </ul>
-     </div><!--chat_area-->
+     </div>
+
+     <!--chat_area-->
           <div class="message_write">
        <textarea id = "new_message2" class="form-control" placeholder="type a message"></textarea>
      <div class="clearfix"></div>
@@ -267,24 +277,33 @@
 
     });
 
-channel.bind('pusher:member_added', function() {
-  // alert("placeholder joined the conversation");
-  // $('#online').show();
-  // $('#away').hide();
-
-});
 
 
-channel.bind('pusher:subscription_succeeded', function() {
+  channel.bind('pusher:subscription_succeeded', function() {
 
-  $('.spinner').hide();
+    $('.spinner').hide();
+    if (channel.members.count >= 2){
+      // alert("You are NOT alone here");
+      $('#online').show();
+      $('#away').hide();
+    };
 
-  if (channel.members.count < 2 ){
-        alert("user count under 2");
-         $('#online').show();
-          $('#away').hide();
-        }
-});
+  });
+
+  channel.bind('pusher:member_added', function() {
+  // alert("Your friend joined the conversation");
+  $('#online').show();
+  $('#away').hide();
+
+  });
+
+  channel.bind('pusher:member_removed', function(member) {
+     alert("Your friend left, go to matches to find a new one");
+    $('#online').hide();
+    $('#away').show();
+
+  });
+
 
 
   // Sender
@@ -315,6 +334,8 @@ channel.bind('pusher:subscription_succeeded', function() {
 
 
     })
+
+
   </script>
 <% end %>
 </div>
