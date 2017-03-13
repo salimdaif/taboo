@@ -1,3 +1,9 @@
+
+<div id="online" style="display: none" ><h2>your interlocuter is in this room</h2></div>
+<div id="away"><h2>your interlocuter is away</h2></div>
+
+
+
 <div class="main_section">
    <div class="container">
       <div class="chat_container">
@@ -158,9 +164,14 @@
 </div></div>
      </div><!--new_message_head-->
 
-     <div id ="meaasges-div" class="chat_area bg-white">
+     <div id ="messages-div" class="chat_area bg-white">
      <ul id = "messages-box" class="list-unstyled">
      <li class="left clearfix">
+
+                  <div class="spinner">
+                  <div class="cube1"></div>
+                  <div class="cube2"></div>
+                  </div>
                      <!-- <span class="chat-img1 pull-left">
                      <img src="https://lh6.googleusercontent.com/-y-MY2satK-E/AAAAAAAAAAI/AAAAAAAAAJU/ER_hFddBheQ/photo.jpg" alt="User Avatar" class="img-circle">
                      </span>
@@ -227,7 +238,7 @@
 
  <%= content_for(:after_js) do  %>
 
-  <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+
   <script>
 
     // Enable pusher logging - don't include this in production
@@ -250,24 +261,38 @@
           $chatdiv = $("<div></div>").addClass("chat-body1 clearfix").append("<p>"+ data.message+"</p>"),
           $listdiv = $("<li></li>").addClass( "left clearfix" ).append($spanct, $chatdiv);
 
-      $("#messages-box").append($listdiv );
-      $("#meaasges-div").animate({ scrollTop: $('#meaasges-div').prop("scrollHeight")}, 1000);
+       $("#messages-box").append($listdiv );
+      $("#messages-div").animate({ scrollTop: $('#messages-div').prop("scrollHeight")}, 1000);
+
+
     });
 
 channel.bind('pusher:member_added', function() {
-  // alert("placeholder joinde the conversation");
-  // dnid.click
+  // alert("placeholder joined the conversation");
+  // $('#online').show();
+  // $('#away').hide();
+
 });
 
 
+channel.bind('pusher:subscription_succeeded', function() {
+
+  $('.spinner').hide();
+
+  if (channel.members.count < 2 ){
+        alert("user count under 2");
+         $('#online').show();
+          $('#away').hide();
+        }
+});
 
 
-  <!-- Sender -->
+  // Sender
 
     $('#send').click(function(event){
       event.preventDefault();
 
-       $("#meaasges-div").animate({ scrollTop: $('#meaasges-div').prop("scrollHeight")}, 1000);
+       $("#messages-div").animate({ scrollTop: $('#messages-div').prop("scrollHeight")}, 1000);
 
       var text = $('textarea#new_message2').val();
       var channel = pusher.subscribe("presence-room-<%= @room.id %>");
@@ -285,6 +310,10 @@ channel.bind('pusher:member_added', function() {
 
       $("#messages-box").append($listdiv );
       $('textarea#new_message2').val("");
+
+
+
+
     })
   </script>
 <% end %>

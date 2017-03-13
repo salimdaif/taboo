@@ -20,12 +20,15 @@ $("#js-rotating").Morphext({
 
 //jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
-  if ($(".navbar").offset().top > 50) {
-    $(".navbar-fixed-top").addClass("top-nav-collapse");
-  } else {
-    $(".navbar-fixed-top").removeClass("top-nav-collapse");
+  var nav = $('.navbar');
+  if (nav.length) {
+    if ($(".navbar").offset().top > 50) {
+      $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+      $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
   }
-});
+  });
 
 //Parallax
   if ($('#parallax1').length  || $('#parallax2').length)
