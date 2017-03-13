@@ -12,6 +12,10 @@
   <body>
 
     <%= render 'users/banner_animation' if current_page? (root_path) %>
+    <%= render 'users/banner_animation' if current_page? (new_user_session_path) %>
+    <%= render 'users/banner_animation' if current_page? (new_user_registration_path) %>
+    <%= render 'users/banner_animation' if current_page? (intro_path) %>
+
 
     <%= render 'shared/flashes' %>
 

@@ -5,7 +5,7 @@
 $(".alert" ).fadeOut(5000);
 
 //Video BG
-$(".bg-player").mb_YTPlayer();
+// $(".bg-player").mb_YTPlayer();
 
 
 //Rotating Text
@@ -87,16 +87,16 @@ if($('.navbar-custom').length > 0){
     });
 }
   //nicescroll
-  $("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"0px",cursorwidth:"10px",cursorcolor:"#555",cursoropacitymin:.5});
-  function initNice() {
-    if($(window).innerWidth() <= 960) {
-      $('html').niceScroll().remove();
-    } else {
-      $("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"2px",cursorcolor:"#555",cursoropacitymin:.1});
-    }
-  }
-  $(window).load(initNice);
-  $(window).resize(initNice);
+  // $("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"0px",cursorwidth:"10px",cursorcolor:"#555",cursoropacitymin:.5});
+  // function initNice() {
+  //   if($(window).innerWidth() <= 960) {
+  //     $('html').niceScroll().remove();
+  //   } else {
+  //     $("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"2px",cursorcolor:"#555",cursoropacitymin:.1});
+  //   }
+  // }
+  // $(window).load(initNice);
+  // $(window).resize(initNice);
 
 $(window).load(function() {
   $(".loader").delay(300).fadeOut();
@@ -240,34 +240,34 @@ $(window).load(function() {
  * Listen to scroll to change header opacity class
  */
 
-function checkScroll(){
-    var startY = $('.navbar-custom').height() * 30; //The point where the navbar changes in px
+// function checkScroll(){
+//     var startY = $('.navbar-custom').height() * 30; //The point where the navbar changes in px
 
-    if($(window).scrollTop() > startY){
-        $('.navbar-custom').addClass("scrolled");
-    }else{
-        $('.navbar-custom').removeClass("scrolled");
-    }
-}
+//     if($(window).scrollTop() > startY){
+//         $('.navbar-custom').addClass("scrolled");
+//     }else{
+//         $('.navbar-custom').removeClass("scrolled");
+//     }
+// }
 
-if($('.navbar-custom').length > 0){
-    $(window).on("scroll load resize", function(){
-        checkScroll();
-    });
-}
-	//nicescroll
-	$("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"0px",cursorwidth:"10px",cursorcolor:"#555",cursoropacitymin:.5});
-	function initNice() {
-		if($(window).innerWidth() <= 960) {
-			$('html').niceScroll().remove();
-		} else {
-			$("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"2px",cursorcolor:"#555",cursoropacitymin:.1});
-		}
-	}
-	$(window).load(initNice);
-	$(window).resize(initNice);
+// if($('.navbar-custom').length > 0){
+//     $(window).on("scroll load resize", function(){
+//         checkScroll();
+//     });
+// }
+// 	//nicescroll
+// 	$("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"0px",cursorwidth:"10px",cursorcolor:"#555",cursoropacitymin:.5});
+// 	function initNice() {
+// 		if($(window).innerWidth() <= 960) {
+// 			$('html').niceScroll().remove();
+// 		} else {
+// 			$("html").niceScroll({zindex:999,cursorborder:"",cursorborderradius:"2px",cursorcolor:"#555",cursoropacitymin:.1});
+// 		}
+// 	}
+// 	$(window).load(initNice);
+// 	$(window).resize(initNice);
 
-$(window).load(function() {
-	$(".loader").delay(300).fadeOut();
-	$("#page-loader").delay(500).fadeOut("slow");
-});
+// $(window).load(function() {
+// 	$(".loader").delay(300).fadeOut();
+// 	$("#page-loader").delay(500).fadeOut("slow");
+// });
