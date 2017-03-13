@@ -1,3 +1,7 @@
+.main_section {
+
+}
+
    #custom-search-input {
     background: #e8e6e7 none repeat scroll 0 0;
     margin: 0;
@@ -106,7 +110,7 @@
    border-bottom:none;
    }
    .member_list {
-   height: 380px;
+   height: 65vh;                                  // member-list height: 500px
    overflow-x: hidden;
    overflow-y: auto;
    }
@@ -148,7 +152,7 @@
 }
 .chat_area {
   float: left;
-  height: 300px;
+  height: 65vh;                                     // chat area height: 300px
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
@@ -198,7 +202,7 @@
   width:100%;
 }
 .member_list li:hover {
-  background: #428bca none repeat scroll 0 0;
+  background: $lilac none repeat scroll 0 0;
   color: #fff;
   cursor:pointer;
 }
