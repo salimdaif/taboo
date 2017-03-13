@@ -5,18 +5,41 @@
   border-bottom: 1px solid rgba(255,255,255,.3);
 }
 
+
+.navbar-glued {
+    position: fixed;
+    margin-bottom: 50px;
+    background-color: $purple;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0px 0;
+    border-bottom: 0;
+    letter-spacing: 1px;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    z-index: 1030;
+  }
 /* Brand details */
 
 .navbar-brand {
+  img {
+    height: 70px;
+    filter:
+      drop-shadow( 3px 3px 2px rgba(0,0,0,.7) );
+  }
+
   padding: 10px 15px;
-  font-weight: 700;
-  font-size: 36px;
+  text-shadow: 4px 4px 6px black;
+}
+  // font-weight: 700;
+  // font-size: 36px;
   // height: 40px;
   // line-height: 1em;
   // line-height: 40px;
-  color: #fff;
-  text-shadow: 4px 4px 6px black;
-}
+  // color: #fff;
+
 
 .navbar-brand:focus {
     color: #fff;
