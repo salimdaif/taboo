@@ -1,14 +1,29 @@
 <% user.answers.order("created_at DESC").each do |answer| %>
-  <ul class="list-inline">
-    <li> <%= answer.question.content %> </li>
-    <%# question.answers.each do |answer| %>
-    <li> <%= answer.content %> </li>
-    <% if policy(answer).edit? %>
-    <li> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>'.html_safe, edit_answer_path(answer)%> </li>
-    <% end %>
-    <% if policy(answer).destroy? %>
-      <li> <%=link_to '<i class="fa fa-trash fa-lg" aria-hidden="true"></i>'.html_safe, answer_path(answer), method: :delete, data: {confirm: "Are you sure?"}, class: "btn-small" %> </li>
-    <% end %>
-  </ul>
-    <%# end %>
+  <div class="row qa-box">
+
+    <div class="col-xs-1"></div>
+    <div class="col-xs-11"> <h1> <%= answer.question.content %></h1></div>
+
+    <div class="col-xs-1 qa-btn">
+      <ul>
+        <% if policy(answer).edit? %>
+          <li><%= link_to (image_tag "001-edit.svg"), edit_answer_path(answer) %></li> <!-- Insert here the links to edit -->
+        <% end %>
+        <% if policy(answer).destroy? %>
+          <li><%= link_to (image_tag "002-trash.svg"), answer_path(answer), method: :delete, data: {confirm: "Are you sure?"}%></li>
+         <% end %> <!-- Insert here the links to delete -->
+      </ul>
+    </div>
+    <div class="col-xs-11"> <!-- Insert here the answer -->
+      <p> <%= answer.content %> </p>
+    </div>
+  </div>
+  <div class="row qa-link">
+    <div class="col-xs-9"></div>
+    <div class="col-xs-3">
+      <% if user == current_user %>
+        <%= link_to "Click here to answer more questions", "#myModal", id: "Modalbtn", data: {toggle:"modal", target:"#myModal"}  %>
+      <%end%>
+    </div>
+  </div>
 <%end%>

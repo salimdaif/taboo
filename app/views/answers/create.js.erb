@@ -5,5 +5,5 @@
   // Reset the form
   $('#new_answer').html("<%= j render 'answers/form', user: current_user, question: @question, answer: Answer.new %>");
   // Reloads the page
-  $('#results').html("<%= j render 'answers/listing', user: current_user %>");
+  $('#questionnaire').html("<%= j render 'answers/listing', user: current_user %>");
 <% end %>
