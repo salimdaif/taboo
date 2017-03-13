@@ -1,71 +1,137 @@
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <%= link_to "taboo", root_path, class: "navbar-brand" %>
-            </div>
+<!-- Navbar Collapsing to pages with Node Animation Background -->
+<% if current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) || current_page?(intro_path) %>
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
 
-            <!-- Different navigation if login or not -->
-            <% if user_signed_in? %>
+      <!-- Logo -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <%= link_to image_tag("logo.svg"), root_path, class: "navbar-brand" %>
+      </div>
 
-              <!-- Notification -->
-              <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-              <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link float-left" do %>
-                <div class="badge-container">
-                  <i class="fa fa-envelope-o"></i>
-                  <div class="badge badge-blue">3</div>
-                </div>
-              <% end %>
+      <!-- Different navigation if login or not -->
+      <% if user_signed_in? %>
 
-              <!-- Profile picture and dropdown -->
-              <div class="navbar-wagon-item float-right">
-                <div class="dropdown">
-                  <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                    <li>
-                      <%= link_to user_path(current_user) do %>
-                        <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-                      <% end %>
-                    </li>
-                    <li>
-                      <%= link_to root_path do %>
-                        <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-                      <% end %>
-                    </li>
-                    <li>
-                      <%= link_to destroy_user_session_path, method: :delete do %>
-                        <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-                      <% end %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              </div>
-            <% else %>
+        <!-- Notification -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link float-left" do %>
+          <div class="badge-container">
+            <i class="fa fa-envelope-o"></i>
+            <div class="badge badge-blue">3</div>
+          </div>
+        <% end %>
 
-              <!-- Login text link -->
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                      <ul class="nav navbar-nav">
-                        <li class="active"><a href="#intro">Home</a></li>
-                        <li><a href="#about">Why we exist?</a></li>
-                        <li><a href="#service">Features</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-                          <ul class="dropdown-menu">
-                            <li><%= link_to "Sign Up", new_user_registration_path, class: "" %></li>
-                            <li><%= link_to "Login", new_user_session_path, class: "" %></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-
-            <% end %>
-
-            <!-- /.navbar-collapse -->
+        <!-- Profile picture and dropdown -->
+        <div class="navbar-wagon-item float-right">
+          <div class="dropdown">
+            <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
- <!-- /.container -->
-</nav>
+      <% else %>
+        <!-- Login text link -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav"><%# link_to 'event', { controller: :pages, action: :home }, class: 'someClass', id: 'someId'  %>
+            <li class="active"><%= link_to 'Home', root_path, id: 'intro'%></li>
+            <li><%= link_to 'Why we exist?', root_path, id: 'about'%></li>
+            <li><%= link_to 'Features', root_path, id: 'service'%></li>
+            <li><%= link_to 'Contact Us', root_path, id: 'contact'%></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Sign Up", new_user_registration_path, class: "" %></li>
+                <li><%= link_to "Login", new_user_session_path, class: "" %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+<% else %><!-- Navbar Fixed to pages without Node Animation Background -->
+
+  <nav class="navbar-glued" role="navigation">
+    <div class="container">
+
+      <!-- Logo -->
+      <div class="navbar-header page-scroll">
+        <%= link_to image_tag("logo.svg"), root_path, class: "navbar-brand" %>
+      </div>
+
+      <!-- Different navigation if login or not -->
+      <% if user_signed_in? %>
+
+        <!-- Notification -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link float-left" do %>
+          <div class="badge-container">
+            <i class="fa fa-envelope-o"></i>
+            <div class="badge badge-blue">3</div>
+          </div>
+        <% end %>
+
+        <!-- Profile picture and dropdown -->
+        <div class="navbar-wagon-item float-right">
+          <div class="dropdown">
+            <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to root_path do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <% else %>
+        <!-- Login text link -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav"><%# link_to 'event', { controller: :pages, action: :home }, class: 'someClass', id: 'someId'  %>
+            <li class="active"><%= link_to 'Home', root_path, id: 'intro'%></li>
+            <li><%= link_to 'Why we exist?', root_path, id: 'about'%></li>
+            <li><%= link_to 'Features', root_path, id: 'service'%></li>
+            <li><%= link_to 'Contact Us', root_path, id: 'contact'%></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Sign Up", new_user_registration_path, class: "" %></li>
+                <li><%= link_to "Login", new_user_session_path, class: "" %></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+<% end %>
+

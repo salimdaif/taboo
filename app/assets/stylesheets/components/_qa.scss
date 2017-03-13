@@ -1,0 +1,59 @@
+// Questions & Answers
+
+.qa-box {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  height: auto;
+  padding-bottom: 10px;
+
+  h1 {
+    color: $cornblue;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 25px;
+    font-weight: normal;
+  }
+
+  p {
+    color: gray;
+    margin-right: 15px;
+    text-align: justify;
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
+.qa-btn {
+  ul {
+    list-style:none;
+  }
+  img {
+    height: 20px;
+    margin-bottom: 10px;
+  }
+
+  a {
+    opacity: 0.2;
+  }
+
+
+  a:hover {
+    opacity: 0.8;
+  }
+}
+
+
+.qa-link {
+  margin-bottom: 50px;
+
+  a {
+    margin-right: -50px;
+    color: gray;
+    font-style: italic;
+  }
+
+  a:hover {
+    color: $lilac;
+  }
+}
