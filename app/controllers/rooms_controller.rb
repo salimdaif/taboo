@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
       if @room.save
         notify(@user, @room, @sender)
-      redirect_to room_path(@room)
+        redirect_to room_path(@room)
       end
     end
   end

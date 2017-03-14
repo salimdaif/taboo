@@ -18,7 +18,7 @@
 }
 
 .status-bar-on {
-  border-top: 6px solid lime;
+  border-top: 6px solid #129800;
   margin-top: 50px;
 }
 
@@ -241,8 +241,10 @@ h4 {
 .text-blue {
   // color: rgba(3,83,164,1);
   color: #342D65;
-  font-family: 'Chewy', cursive;
+  font-family: 'Roboto';
+  font-size: 20px;
   // font-style: italic;
+  margin-bottom: 7px;
 }
 .text-it {
   font-style: italic;

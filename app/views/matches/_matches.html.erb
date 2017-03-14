@@ -27,19 +27,23 @@
         <% @matches_hash.each do |user_id, score| %>
           <% user = User.find(user_id) %>
           <div class="col-xs-3 col-xs-offset-1 shadow">
-            <div class="row status-bar-off"></div>
+            <% if user.online? %>
+              <div class="row status-bar-on"></div>
+            <% else %>
+              <div class="row status-bar-off"></div>
+            <% end %>
             <div class="row user-details">
               <div class="avatar-container p-<%= score %>">
-                  <%= image_tag "http://i.pravatar.cc/100?u=#{user.email}", class: "avatar" %>
-                  </div>
+                <%= image_tag "http://i.pravatar.cc/100?u=#{user.email}", class: "avatar" %>
+              </div>
               <h1><%= user.username.capitalize %></h1>
               <span>member since <%= user.created_at.strftime("%Y") %></span>
             </div>
             <div class="row user-profile">
               <div class="col-xs-12">
-              <%= link_to(rooms_path(recipient: user.id), options = {class:'btn btn-primary btn-lg cta-button'}, html_options = {method: :post}) do %>
-                <%= image_tag "003-chat.svg", class: "mini-icon"%> &nbsp; Converse
-              <% end %>
+                <%= link_to rooms_path(recipient: user.id), method: :post, class: "btn btn-primary btn-lg cta-button" do %>
+                  <%= image_tag "003-chat.svg", class: "mini-icon"%> &nbsp; Converse
+                <% end %>
               </div>
               <div class="col-xs-12 cta-link">
                 <%= link_to "View profile", user_path(user), :class => "cta-link" %>
