@@ -17,18 +17,16 @@ class User < ApplicationRecord
   end
 
   def answered_minimum_questions?
-    answers.sum_of_content >= 500 ? true : false
+    answers.sum_of_content >= 100 ? true : false
   end
 
   def percentage
-    if (( answers.sum_of_content / 500.0 ) * 100) <= 100
-      (( answers.sum_of_content / 500.0 ) * 100).to_s
+    if (( answers.sum_of_content / 100.0 ) * 100) <= 100
+      (( answers.sum_of_content / 100.0 ) * 100).to_s
     else
       100
     end
   end
-
-
 
   def init_answers
     File.open("tmp/answer_user_#{self.id}.txt","w") do |line|
@@ -143,9 +141,10 @@ class User < ApplicationRecord
 
     end
   end
-
     score
   end
+
+
   # instead of deleting, indicate the user requested a delete & timestamp it
   def soft_delete
     update_attribute(:deleted_at, Time.current)
@@ -159,6 +158,13 @@ class User < ApplicationRecord
   # provide a custom message for a deleted account
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
 
+  def overall_rating
+    scores = []
+    self.ratings.each do |rating|
+      scores << ((rating.helpfulness.to_f + rating.response_time.to_f + rating.empathy.to_f) / 3.0)
+     end
+     (scores.inject(&:+) / scores.length.to_f)
   end
 end

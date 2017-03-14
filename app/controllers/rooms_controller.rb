@@ -5,12 +5,23 @@ class RoomsController < ApplicationController
   def create
     if @user = User.find(params[:recipient])
 
-      @room = Room.new(sender_id: current_user.id, recipient_id: params[:recipient])
+      @room = Room.new(sender_id: current_user.id, recipient_id: @user.id)
+      @sender = current_user
 
-      redirect_to room_path(@room) if @room.save
+      if @room.save
+        notify(@user, @room, @sender)
+      redirect_to room_path(@room)
+      end
     end
+  end
 
 
+  def notify(user, room, sender)
+    begin
+      Pusher.trigger('online-channel', 'notify_user', :user_id => user.id, :room_id => room.id, :sender_username => sender.username)
+    rescue Pusher::Error => e
+      # (Pusher::AuthenticationError, Pusher::HTTPError, or Pusher::Error)
+    end
 
   end
 
