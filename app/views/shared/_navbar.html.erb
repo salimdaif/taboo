@@ -17,16 +17,16 @@
         <!-- Notification -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
         <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link float-left" do %>
-          <div class="badge-container">
+          <!-- <div class="badge-container">
             <i class="fa fa-envelope-o"></i>
-            <div class="badge badge-blue">3</div>
+            <div class="badge badge-blue">3</div> -->
           </div>
         <% end %>
 
         <!-- Profile picture and dropdown -->
         <div class="navbar-wagon-item float-right">
           <div class="dropdown">
-            <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag "#{current_user.avatar}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
                 <%= link_to user_path(current_user) do %>
@@ -83,16 +83,16 @@
         <!-- Notification -->
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
         <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link float-left" do %>
-          <div class="badge-container">
+          <!-- <div class="badge-container">
             <i class="fa fa-envelope-o"></i>
-            <div class="badge badge-blue">3</div>
+            <div class="badge badge-blue">3</div> -->
           </div>
         <% end %>
 
         <!-- Profile picture and dropdown -->
         <div class="navbar-wagon-item float-right">
           <div class="dropdown">
-            <%= image_tag "http://i.pravatar.cc/150?u=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag "#{current_user.avatar}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
                 <%= link_to user_path(current_user) do %>
