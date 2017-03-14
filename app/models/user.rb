@@ -5,7 +5,7 @@ class User < ApplicationRecord
   require 'json'
   has_many :sent_ratings, :foreign_key => :sender_id, class_name: 'Rating'
   has_many :ratings, :foreign_key => :recipient_id
-  has_many :answers
+  has_many :answers, dependent: :destroy
   has_many :questions, through: :answers
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
