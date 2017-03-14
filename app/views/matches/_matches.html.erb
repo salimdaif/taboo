@@ -34,7 +34,7 @@
             <% end %>
             <div class="row user-details">
               <div class="avatar-container p-<%= score %>">
-                <%= image_tag "http://i.pravatar.cc/100?u=#{user.email}", class: "avatar" %>
+                <%= image_tag "#{user.avatar}", class: "avatar" %>
               </div>
               <h1><%= user.username.capitalize %></h1>
               <span>member since <%= user.created_at.strftime("%Y") %></span>
