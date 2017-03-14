@@ -1,4 +1,15 @@
 <% content_for :title, "Profile #{@user.username}" %>
+
+<% url_for(:back) %>
+<% origin = request.env["HTTP_REFERER"][-7..-3] %>
+<% if origin == 'match' %>
+<%   questionnaire = 'tab active'
+     personality = 'tab'%>
+<% else %>
+<%   questionnaire = 'tab'
+     personality = 'tab'
+  end %>
+
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
     <div class="profile-header-infos">
@@ -7,10 +18,10 @@
       <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
     </div>
     <div class="tabs">
-      <a class="<%= 'tab active' if origin == 'users' || 'tab' if origin != 'users'%>" data-target="#questionnaire">
+      <a class="<%= questionnaire %>" data-target="#questionnaire">
        <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
       </a>
-      <a class="tab" data-target="#personality">
+      <a class="<%= personality %>" data-target="#personality">
         <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
       </a>
       <% if @user != current_user %>
