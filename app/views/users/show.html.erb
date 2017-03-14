@@ -1,3 +1,5 @@
+<% url_for(:back)
+   origin = request.env["HTTP_REFERER"][-7..-3]%>
 
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
@@ -7,7 +9,7 @@
       <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
     </div>
     <div class="tabs">
-      <a class="tab active" data-target="#questionnaire">
+      <a class="<%= 'tab active' if origin == 'users' || 'tab' if origin != 'users'%>" data-target="#questionnaire">
        <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
       </a>
       <a class="tab" data-target="#personality">
