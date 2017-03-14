@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   skip_before_action :redirect_to_custom_path, only: :show
 
+  before_action only: [:personality, :questionnaire] do
+    @user = User.find(params[:id])
+  end
+
+
+
+
+
   def show
     if params[:seen_intro].present?
       User.find(current_user.id).update(seen_intro: true)
@@ -48,6 +56,10 @@ class UsersController < ApplicationController
     @user.get_insight
     redirect_to user_path(@user)
   end
+
+
+  def personality; end
+  def questionnaire; end
 
   private
 

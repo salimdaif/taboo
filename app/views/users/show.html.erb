@@ -1,4 +1,6 @@
 <% content_for :title, "Profile #{@user.username}" %>
+
+
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
     <div class="profile-header-infos">
@@ -6,91 +8,10 @@
       <h1><%= @user.username %></h1>
       <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
     </div>
-    <div class="tabs">
-      <a class="tab active" data-target="#questionnaire">
-       <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
-      </a>
-      <a class="tab" data-target="#personality">
-        <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
-      </a>
-      <% if @user != current_user %>
-        <%= link_to rooms_path(recipient: @user.id), method: :post, class: "tab" do %>
-          <h3><%= image_tag "003-chat.svg", class: "tab-icon" %>Converse now!</h3>
-        <% end %>
-      <% else %>
-        <%= link_to matches_path, class: "tab" do %>
-          <h3><%= image_tag "003-chat.svg", class: "tab-icon" %> Matches </h3>
-        <% end %>
-      <% end %>
-    </div>
+      <%= render "shared/menu" %>
   </div>
 </div>
 
-<div class="container text-center">
-      <div class="tab-content hidden" id="personality">
-        <% if @user == current_user %>
-          <% @user.print_insight %>
-          <%= link_to "Calculate Your Personality Insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn btn-primary" %>
-        <% end %>
-        <br>
-        <br>
-        <div class="row">
-          <div class="col-xs-6">
-            <h1 class="text-blue">Values</h1>
-            <br>
-
-            <h5 class="align-center text-blue">Emotionality</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Emotionality"] %>"></progress>
-
-
-
-            <h5 class="align-center text-blue">Excitement-seeking</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Excitement-seeking"] %>"></progress>
-
-
-
-            <h5 class="align-center text-blue">Adventurousness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Adventurousness"] %>"></progress>
-
-            <h5 class="align-center text-blue">Artistic interests</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Artistic interests"] %>"></progress>
-
-            <h5 class="align-center text-blue">Achievement striving</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Achievement striving"] %>"></progress>
-          </div>
-          <div class="col-xs-6">
-            <h1 class="text-blue">Personality</h1>
-            <br>
-
-            <h5 class="align-center text-blue">Openness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Openness"] %>"></progress>
-
-            <h5 class="align-center text-blue">Sympathy</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Sympathy"] %>"></progress>
-
-            <h5 class="align-center text-blue">Agreeableness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Agreeableness"] %>"></progress>
-
-
-            <h5 class="align-center text-blue">Melancholy</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Melancholy"] %>"></progress>
-
-
-
-
-
-            <h5 class="align-center text-blue">Imagination</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Imagination"] %>"></progress>
-          </div>
-          </div>
-        </div>
-
-    <div class="tab-content" id="questionnaire">
-      <%= render 'answers/listing', user: @user %>
-    </div>
-
-
-</div>
 
 
 

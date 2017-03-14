@@ -13,7 +13,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     # delete 'deactivate', on: :member
-    post 'calculate_insight', on: :member
+    member do
+      get :personality
+      get :questionnaire
+      post :calculate_insight
+    end
+
     resources :questions, only: [:show] do
       resources :answers, only: [:new, :create]
     end
