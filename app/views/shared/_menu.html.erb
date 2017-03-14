@@ -1,0 +1,12 @@
+<div class="tabs">
+  <%= link_to(questionnaire_user_path(current_user), options = {class: "tab #{'active' if active == 'questionnaire' }"}) do %>
+    <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
+  <% end %>
+  <%= link_to(personality_user_path(current_user.id), options = {class: "tab #{'active' if active == 'personality' }"}) do %>
+    <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
+  <% end %>
+
+  <%= link_to(matches_path, options = {class: "tab"}) do %>
+    <h3><%= image_tag "003-chat.svg", class: "tab-icon"%>Matches</h3>
+  <% end %>
+</div>
