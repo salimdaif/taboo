@@ -18,9 +18,9 @@
           <h3><%= image_tag "003-chat.svg", class: "tab-icon" %>Converse now!</h3>
         <% end %>
       <% else %>
-      <a class="tab" data-target="#matches">
-        <h3> <%= image_tag"003-chat.svg", class: "tab-icon" %> Matches </h3>
-      </a>
+        <%= link_to matches_path, class: "tab" do %>
+          <h3><%= image_tag "003-chat.svg", class: "tab-icon" %> Matches </h3>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -28,6 +28,12 @@
 
 <div class="container text-center">
       <div class="tab-content hidden" id="personality">
+        <% if @user == current_user %>
+          <% @user.print_insight %>
+          <%= link_to "Calculate Your Personality Insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn btn-primary" %>
+        <% end %>
+        <br>
+        <br>
         <div class="row">
           <div class="col-xs-6">
             <h5 class="align-center text-blue">Outgoing</h5>
@@ -163,10 +169,4 @@
         </script>
       <% end %>
     <% end %>
-
-
-    <%# @user.print_insight %>
-
-
-    <%# link_to "Calculate insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn" %>
 
