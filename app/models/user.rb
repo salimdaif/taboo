@@ -175,9 +175,13 @@ class User < ApplicationRecord
      (scores.inject(&:+) / scores.length.to_f)
   end
 
-  def online?
-    if ((DateTime.current - self.last_sign_in_at.to_datetime).to_i * 24) < 5
-      true
+def online?
+    if self.last_sign_in_at != nil
+      if ((DateTime.current - self.last_sign_in_at.to_datetime).to_i * 24) < 5
+        true
+      else
+        false
+      end
     else
       false
     end
