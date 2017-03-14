@@ -99,6 +99,7 @@ class User < ApplicationRecord
       end
     end
   end
+
     target_traits ={}
 
 
