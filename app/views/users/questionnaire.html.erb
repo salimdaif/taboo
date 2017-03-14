@@ -1,0 +1,17 @@
+<div class="profile-header-wrapper">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <%= image_tag "#{@user.avatar}", class: "profile-picture"%>
+      <h1><%= @user.username %></h1>
+      <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
+    </div>
+      <%= render partial: "shared/menu", locals: { active: 'questionnaire' } %>
+  </div>
+</div>
+
+<div class="container text-center">
+<div class="tab-content" id="questionnaire">
+  <%= render 'answers/listing', user: @user %>
+</div>
+
+</div>
