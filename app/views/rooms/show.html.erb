@@ -2,7 +2,7 @@
 <div id="online" style="display: none" ><h2>your interlocuter is in this room</h2><i class="fa fa-circle" aria-hidden="true" style="color: green "></i></div>
 <div id="away"><h2>your interlocuter is away</h2><i class="fa fa-circle" aria-hidden="true" style="color: red"></i></div>
  -->
-
+<% content_for :title, "Chat" %>
 
  <div class="main_section">
   <div class="container">
@@ -36,7 +36,7 @@
               <li class="left clearfix">
 
                <span class="chat-img pull-left">
-                 <img src="https://lh6.googleusercontent.com/-y-MY2satK-E/AAAAAAAAAAI/AAAAAAAAAJU/ER_hFddBheQ/photo.jpg" alt="User Avatar" class="img-circle">
+                 <img src="<%=user.avatar%>" alt="User Avatar" class="img-circle">
                </span>
                <div class="chat-body clearfix">
                 <div class="header_sec">

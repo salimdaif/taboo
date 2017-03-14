@@ -1,8 +1,8 @@
-
+<% content_for :title, "Profile #{@user.username}" %>
 <div class="profile-header-wrapper">
   <div class="container profile-header-container text-center">
     <div class="profile-header-infos">
-      <%= image_tag "http://i.pravatar.cc/150?u=#{@user.email}", class: "profile-picture"%>
+      <%= image_tag "#{@user.avatar}", class: "profile-picture"%>
       <h1><%= @user.username %></h1>
       <h2>member since <%= @user.created_at.strftime("%Y") %></h2>
     </div>
@@ -36,33 +36,32 @@
         <br>
         <div class="row">
           <div class="col-xs-6">
-            <h5 class="align-center text-blue">Outgoing</h5>
+          <h1 class="text-blue">Needs</h1>
+          <br>
+          <br>
+            <!-- <h5 class="align-center text-blue">Outgoing</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Outgoing"] %>"></progress>
-
+ -->
               <h5 class="align-center text-blue">Emotionality</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Emotionality"] %>"></progress>
 
-              <h5 class="align-center text-blue">Self-efficacy</h5>
+              <!-- <h5 class="align-center text-blue">Self-efficacy</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Self-efficacy"] %>"></progress>
 
               <h5 class="align-center text-blue">Fiery</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Fiery"] %>"></progress>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Fiery"] %>"></progress> -->
 
-               <h5 class="align-center text-blue">Openness</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Openness"] %>"></progress>
+                <h5 class="align-center text-blue">Excitement-seeking</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Excitement-seeking"] %>"></progress>
 
-              <h5 class="align-center text-blue">Sympathy</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Sympathy"] %>"></progress>
 
-              <h5 class="align-center text-blue">Agreeableness</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Agreeableness"] %>"></progress>
 
               <h5 class="align-center text-blue">Adventurousness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Adventurousness"] %>"></progress>
 
               <h5 class="align-center text-blue">Artistic interests</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Artistic interests"] %>"></progress>
-
+<!--
               <h5 class="align-center text-blue">Cheerfulness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Cheerfulness"] %>"></progress>
 
@@ -71,44 +70,53 @@
 
               <h5 class="align-center text-blue">Conscientiousness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Conscientiousness"] %>"></progress>
-
+ -->
               <h5 class="align-center text-blue">Achievement striving</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Achievement striving"] %>"></progress>
 
-              <h5 class="align-center text-blue">Prone to worry</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Prone to worry"] %>"></progress>
+             <!--  <h5 class="align-center text-blue">Prone to worry</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Prone to worry"] %>"></progress> -->
 
           </div>
           <div class="col-xs-6">
+              <h1 class="text-blue">Personality</h1>
+              <br>
+              <br>
+              <h5 class="align-center text-blue">Openness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Openness"] %>"></progress>
 
-              <h5 class="align-center text-blue">Orderliness</h5>
+              <h5 class="align-center text-blue">Sympathy</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Sympathy"] %>"></progress>
+
+              <h5 class="align-center text-blue">Agreeableness</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Agreeableness"] %>"></progress>
+    <!--           <h5 class="align-center text-blue">Orderliness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Orderliness"] %>"></progress>
 
               <h5 class="align-center text-blue">Cautiousness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Cautiousness"] %>"></progress>
 
               <h5 class="align-center text-blue">Self-discipline</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Self-discipline"] %>"></progress>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Self-discipline"] %>"></progress> -->
 
-              <h5 class="align-center text-blue">Extraversion</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Extraversion"] %>"></progress>
+              <!-- <h5 class="align-center text-blue">Extraversion</h5>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Extraversion"] %>"></progress> -->
 
               <h5 class="align-center text-blue">Melancholy</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Melancholy"] %>"></progress>
 
-              <h5 class="align-center text-blue">Assertiveness</h5>
+             <!--  <h5 class="align-center text-blue">Assertiveness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Assertiveness"] %>"></progress>
 
               <h5 class="align-center text-blue">Cheerfulness</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cheerfulness"] %>"></progress>
+              <progress  class="align-center" max="100" value="<%= @user.print_insight["Cheerfulness"] %>"></progress> -->
 
-              <h5 class="align-center text-blue">Excitement-seeking</h5>
-              <progress  class="align-center" max="100" value="<%= @user.print_insight["Excitement-seeking"] %>"></progress>
+
 
               <h5 class="align-center text-blue">Imagination</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Imagination"] %>"></progress>
 
-              <h5 class="align-center text-blue">Gregariousness</h5>
+             <!--  <h5 class="align-center text-blue">Gregariousness</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Gregariousness"] %>"></progress>
 
               <h5 class="align-center text-blue">Altruism</h5>
@@ -122,7 +130,7 @@
 
               <h5 class="align-center text-blue">Authority-challenging</h5>
               <progress  class="align-center" max="100" value="<%= @user.print_insight["Authority-challenging"] %>"></progress>
-      </div>
+      </div> -->
     </div>
   </div>
 
