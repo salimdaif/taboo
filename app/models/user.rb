@@ -12,6 +12,12 @@ class User < ApplicationRecord
 
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 18, less_than: 120 }
 
+  before_save :default_values
+  def default_values
+    self.avatar ||= '/avatar/001.png'
+  end
+
+
   def unanswered_questions
     Question.where.not(id: self.questions.map(&:id)).sample
   end
