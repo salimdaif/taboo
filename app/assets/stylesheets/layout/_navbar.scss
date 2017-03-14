@@ -10,6 +10,7 @@
     position: fixed;
     margin-bottom: 50px;
     background-color: $purple;
+    // opacity: 0.8;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: 0px 0;
     border-bottom: 0;
@@ -27,7 +28,7 @@
   img {
     height: 70px;
     filter:
-      drop-shadow( 3px 3px 2px rgba(0,0,0,.7) );
+      drop-shadow( 3px 3px 3px rgba(0,0,0,.4) );
   }
 
   padding: 10px 15px;
