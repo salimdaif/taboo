@@ -33,6 +33,7 @@
             <ul class="list-unstyled">
               <% @matches_hash.each do |user_id, score| %>
               <% user = User.find(user_id) %>
+              <a href="/users/<%= user_id%>">
               <li class="left clearfix">
 
                <span class="chat-img pull-left">
@@ -47,7 +48,7 @@
                </div>
              </div>
            </li>
-
+          </a>
            <%end%>
          </ul>
        </div></div>
