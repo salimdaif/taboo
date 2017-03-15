@@ -338,7 +338,6 @@ $color-bar: $lilac;
 //   margin: 30vh auto;
 //   text-align: center;
 // }
-
 .avatar-container{
   position: relative;
   display: inline-block;
@@ -349,9 +348,21 @@ $color-bar: $lilac;
   padding: 0;
   margin: 0 1rem;
   border: none;
-  background: $purple;
+  background-color: $purple;
   cursor: pointer;
-
+  &:hover {
+    .percent {
+      display: block;
+      position: absolute;
+      top: 55px;
+      left: 45px;
+      color: white;
+      z-index: 9999;
+    }
+  }
+  .percent {
+    display: none;
+  }
   .avatar{
     display: block;
     margin: 15px;
