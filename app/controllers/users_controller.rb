@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def calculate_insight
     @user = User.find(params[:id])
     @user.get_insight
-    redirect_to user_path(@user)
+    redirect_to user_path(@user, tab: 'personality')
   end
 
   private
