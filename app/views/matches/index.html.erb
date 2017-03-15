@@ -36,6 +36,7 @@
             <div class="row user-details">
               <div class="avatar-container p-<%= score %>">
                 <%= image_tag "#{user.avatar}", class: "avatar" %>
+                <p class="percent"><%= score %></p>
               </div>
               <h1><%= user.username.capitalize %></h1>
               <span>member since <%= user.created_at.strftime("%Y") %></span>

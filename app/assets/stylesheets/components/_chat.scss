@@ -1,5 +1,10 @@
 .main_section {
-
+  background-size: 100%;
+  background-image: linear-gradient(180deg, rgba(0,0, 0, 0.4) 88%, rgba(71, 61, 136, 0.7) 102%), image-url('bg-nodes-2.png');
+  // background-repeat: no-repeat;
+  margin-top: -20px;
+  padding-top: 20px;
+  padding-bottom: 38px;
 }
 
    #custom-search-input {
