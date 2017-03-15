@@ -6,10 +6,10 @@
       <h5>"You can expect a lot of patience and understanding from others who are walking the same road as you"</h5>
     </div>
     <div class="tabs">
-      <%= link_to(user_path(current_user.id, anchor:'questionnaire'), options = {class:'tab'}) do %>
+      <%= link_to(user_path(current_user.id, tab: 'questionnaire'), options = {class:'tab'}) do %>
         <h3><%= image_tag "002-questions.svg", class: "tab-icon"%>Questionnaire</h3>
       <% end %>
-      <%= link_to(current_user, options = {class:'tab'}, html_options = {anchor: 'personality'}) do %>
+      <%= link_to(user_path(current_user.id, tab: 'personality'), options = {class:'tab'}) do %>
         <h3><%= image_tag "001-user.svg", class: "tab-icon"%>Personality</h3>
       <% end %>
       <a class="tab active" data-target="#conversation">
