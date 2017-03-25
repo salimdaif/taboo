@@ -59,19 +59,19 @@
      <div class="col-sm-9 message_section">
        <div class="row">
 
-         <div class="new_message_head">
+         <div id ="message-head" class="new_message_head">
 
            <div class="pull-left"><i class="fa fa-plus-square-o hidden" aria-hidden="true"></i>
-             <div id="online" style="display: none" ><i class="fa fa-circle" aria-hidden="true" style="color: green "></i>  <%= @target.username %></div>
-             <div id="away"><i class="fa fa-circle" aria-hidden="true" style="color: red"></i>  <%= @target.username %></div>
+             <div id="online" style="display: none" ><i class="fa fa-circle" aria-hidden="true" style="color: green "></i>(active)  <%= @target.username %></div>
+             <div id="away"><i class="fa fa-circle" aria-hidden="true" style="color: red"></i>(away)  <%= @target.username %></div>
 
 
 
            </div><div class="pull-right"><div class="dropdown">
-           <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <!-- <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-cogs" aria-hidden="true"></i>  Settings
             <span class="caret"></span>
-          </button>
+          </button> -->
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
             <li><a href="#">Action</a></li>
             <li><a href="#">Profile</a></li>
@@ -115,6 +115,46 @@
 
 
 <%= content_for(:after_js) do  %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"></script>
+<script>
+var tour = new Tour({
+  backdrop: true,
+  template: " <div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'>« Prev</button><span data-role='separator'>|</span><button class='btn btn-default' data-role='next'>Next »</button></div><button class='btn btn-default' data-role='end'>Close tour</button></div> " ,
+
+  steps: [
+  {
+    element: "#message-head",
+    title: "User status",
+    content: "here you can see if your friend is ready to enter the room"
+  },
+  {
+    element: "#new_message2",
+    title: "Messages",
+    content: "All the conversation are encrypted to make sure only you and the one your talking with can see it"
+  },
+  {
+    element: "#messages-div",
+    title: "Messages",
+    content: "There is no storage of your message if you refresh this page it all goes away"
+  }
+]});
+
+
+// Initialize the tour
+tour.init();
+
+// Start the tour
+
+$(document).ready(function(){
+  tour.start();
+  tour.restart();
+})
+
+
+</script>
+
+<!-- Pusher-->
   <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
 
   <script>

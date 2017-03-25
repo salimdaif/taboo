@@ -22,17 +22,10 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
-     <% if Rails.env.production? %>
-    <script type="text/javascript">
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css" rel="stylesheet">
 
-  ga('create', 'UA-75009543-3', 'auto');
-  </script>
-  <% end %>
+
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
