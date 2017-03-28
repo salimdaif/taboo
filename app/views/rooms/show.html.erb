@@ -139,11 +139,6 @@ var tour = new Tour({
     content: "There is no storage of your message if you refresh this page it all goes away"
   },
   {
-    element: "#message-head",
-    title: "User status",
-    content: "Here you can see if your friend is ready to enter the room"
-  },
-  {
     element: "#dropdownMenu2",
     title: "Matches",
     content: "Find all your matches here"
@@ -250,11 +245,14 @@ $(document).ready(function(){
       $("#messages-box").append($listdiv );
       $('textarea#new_message2').val("");
 
-
-
-
     })
+    $(document).keydown(function(objEvent) {
 
+        if (objEvent.keyCode == 13) {
+          event.preventDefault(); //clicked enter
+          $('#send').click();
+        }
+    })
 
   </script>
 <% end %>
