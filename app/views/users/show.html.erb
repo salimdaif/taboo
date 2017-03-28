@@ -40,10 +40,12 @@
         <h3 class="align-center text-blue">Values</h3>
         <canvas id="chartPole" width="250" height="250"></canvas>
       </div>
+
         <% if @user == current_user %>
           <% @user.print_insight %>
-          <%= link_to "Calculate Your Personality Insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn btn-primary" %>
+          <%= link_to "Calculate Your Personality Insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn btn-primary" , :id => "insightButton"%>
         <% end %>
+
     </div>
   </div>
 
@@ -89,6 +91,46 @@
     <% end %>
 
       <% content_for(:after_js) do %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.js"></script>
+<script>
+var tour = new Tour({
+  name: 'personnality_tour',
+  backdrop: true,
+  template: "<div class='popover tour inline'><div class='arrow'></div><h3 class='popover-title text-center text-blue'></h3><div class='popover-content text-center text-blue'></div><div class='popover-navigation text-center'><button class='btn btn-default' data-role='prev'><i class='fa fa-long-arrow-left' aria-hidden='true'></i></button><span data-role='separator'>|</span><button class='btn btn-default' data-role='next'><i class='fa fa-long-arrow-right' aria-hidden='true'></i></button><button class='btn btn-default' data-role='end'>Close</button></div>" ,
+
+  steps: [
+  {
+    element: "#chartweb1",
+    title: "Title",
+    content: "This is the main personalities"
+  },
+  {
+    element: "#chartPole",
+    title: "title",
+    content: "those are the values"
+  },
+  {
+    element: "#insightButton",
+    title: "calculate insight",
+    content: "Only click after you answered new questions"
+  }
+]});
+
+
+// Initialize the tour
+tour.init();
+
+// Start the tour
+
+$(document).ready(function(){
+  tour.start();
+  // tour.restart();
+})
+
+
+</script>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 
       <script>
