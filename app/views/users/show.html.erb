@@ -27,69 +27,30 @@
 </div>
 
 <div class="container text-center">
-      <div class="tab-content <%= tab_hidden('personality', params[:tab])%>" id="personality">
+  <div class="tab-content <%= tab_hidden('personality', params[:tab])%>" id="personality">
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-xs-8">
+        <canvas id="chartweb1" width="250" height="250"></canvas>
+      </div>
+
+      <!-- </div> -->
+      <div class="col-xs-4">
+        <h3 class="align-center text-blue">Values</h3>
+        <canvas id="chartPole" width="250" height="250"></canvas>
+      </div>
         <% if @user == current_user %>
           <% @user.print_insight %>
           <%= link_to "Calculate Your Personality Insight", calculate_insight_user_path(@user.id), method: :post, :class => "btn btn-primary" %>
         <% end %>
-        <br>
-        <br>
-        <div class="row">
-          <div class="col-xs-6">
-            <h1 class="text-blue">Values</h1>
-            <br>
-
-            <h5 class="align-center text-blue">Emotionality</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Emotionality"] %>"></progress>
-
-
-
-            <h5 class="align-center text-blue">Excitement-seeking</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Excitement-seeking"] %>"></progress>
-
-
-
-            <h5 class="align-center text-blue">Adventurousness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Adventurousness"] %>"></progress>
-
-            <h5 class="align-center text-blue">Artistic interests</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Artistic interests"] %>"></progress>
-
-            <h5 class="align-center text-blue">Achievement striving</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Achievement striving"] %>"></progress>
-          </div>
-          <div class="col-xs-6">
-            <h1 class="text-blue">Personality</h1>
-            <br>
-
-            <h5 class="align-center text-blue">Openness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Openness"] %>"></progress>
-
-            <h5 class="align-center text-blue">Sympathy</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Sympathy"] %>"></progress>
-
-            <h5 class="align-center text-blue">Agreeableness</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Agreeableness"] %>"></progress>
-
-
-            <h5 class="align-center text-blue">Melancholy</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Melancholy"] %>"></progress>
-
-
-
-
-
-            <h5 class="align-center text-blue">Imagination</h5>
-            <progress  class="align-center" max="100" value="<%= @user.print_insight["Imagination"] %>"></progress>
-          </div>
-          </div>
-        </div>
-
-    <div class="tab-content <%= tab_hidden('questionnaire', params[:tab])%>" id="questionnaire">
-      <%= render 'answers/listing', user: @user %>
     </div>
+  </div>
 
 
+      <div class="tab-content <%= tab_hidden('questionnaire', params[:tab])%>" id="questionnaire">
+        <%= render 'answers/listing', user: @user %>
+      </div>
 </div>
 
 
@@ -127,3 +88,66 @@
       <% end %>
     <% end %>
 
+      <% content_for(:after_js) do %>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+
+      <script>
+    var ctx = $("#chartweb1");
+    var data = {
+    labels: <%= raw (@user.print_insight.keys[0..30]) %>,
+    datasets: [
+        {
+            label: "Personality",
+            backgroundColor: "rgba(71, 61, 138,0.8)",
+            borderColor: "#6F58C9",
+            pointBackgroundColor: "#6F58C9",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "#6F58C9",
+          data: <%= raw (@user.print_insight.values[0..30]) %>
+        }
+    ]
+};
+new Chart(ctx, {
+    type: "radar",
+    data: data,
+    options: {
+            scale: {
+                reverse: true,
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+    }
+});
+ var ctx = $("#chartPole");
+        var data = {
+    datasets: [{
+        data: <%= raw (@user.print_insight.values[28..36]) %>,
+        backgroundColor: [
+            "rgba(111, 88, 201, 0.8)",
+            "rgba(125, 131, 255, 0.8)",
+            "rgba(188, 237, 246, 0.8)",
+            "rgba(71, 61, 138, 0.7)",
+            "rgba(83,154,237,0.7)",
+            "rgba(134, 104, 168, 0.7)",
+            "rgba(167,204,237,0.7)"
+        ],
+        label: 'My dataset' // for legend
+    }],
+    labels:<%= raw (@user.print_insight.keys[28..36]) %>
+};
+
+ new Chart(ctx, {
+    data: data,
+    type: "polarArea",
+    options: {
+        elements: {
+            arc: {
+                borderColor: "#F7F8FB"
+            }
+        }
+    }
+});
+      </script>
+      <%end%>
