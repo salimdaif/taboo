@@ -4,7 +4,7 @@
  -->
 <% content_for :title, "Chat" %>
 
- <div class="main_section">
+<div class="main_section">
   <div class="container">
     <div class="chat_container">
       <!--chat_sidebar-->
@@ -34,21 +34,21 @@
               <% @matches_hash.each do |user_id, score| %>
               <% user = User.find(user_id) %>
               <a href="/users/<%= user_id%>">
-              <li class="left clearfix">
+                <li class="left clearfix">
 
-               <span class="chat-img pull-left">
-                 <img src="<%=user.avatar%>" alt="User Avatar" class="img-circle">
-               </span>
-               <div class="chat-body clearfix">
-                <div class="header_sec">
-                 <strong class="primary-font"><%= user.username %></strong>
+                 <span class="chat-img pull-left">
+                   <img src="<%=user.avatar%>" alt="User Avatar" class="img-circle">
+                 </span>
+                 <div class="chat-body clearfix">
+                  <div class="header_sec">
+                   <strong class="primary-font"><%= user.username %></strong>
+                 </div>
+                 <div class="contact_sec">
+                   <strong class="primary-font"><%= score%>% Fit</strong>
+                 </div>
                </div>
-               <div class="contact_sec">
-                 <strong class="primary-font"><%= score%>% Fit</strong>
-               </div>
-             </div>
-           </li>
-          </a>
+             </li>
+           </a>
            <%end%>
          </ul>
        </div></div>
@@ -72,6 +72,7 @@
             <i class="fa fa-cogs" aria-hidden="true"></i>  Settings
             <span class="caret"></span>
           </button> -->
+          <%= link_to "Rate This", "#myModal", id: "Modalbtn", data: {toggle:"modal", target:"#myModal"}  %>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
             <li><a href="#">Action</a></li>
             <li><a href="#">Profile</a></li>
@@ -103,10 +104,33 @@
          Send</a></div>
        </div>
      </div>
-   </div> <!--message_section-->
+   </div>
+
+    <!--message_section-->
  </div>
 </div>
 </div>
+
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">How was it ?</h4>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for  @rating, as: :rating do |f| %>
+                <%= f.input :review %>
+                <%= f.input :helpfulness, collection: Rating::RATING, as: :radio_buttons,label_html: { class: 'text-center' }  %>
+                <%= f.input :empathy, collection: Rating::RATING, as: :radio_buttons %>
+                <%= f.input :response_time, collection: Rating::RATING, as: :radio_buttons %>
+                <%= f.input :recipient_id, :as => :hidden, :input_html => { :value => @target.id }%>
+                <%= f.submit "Rate", class: "btn btn-primary" %>
+              <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 </div>

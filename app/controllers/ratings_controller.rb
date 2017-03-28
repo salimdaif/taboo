@@ -7,10 +7,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new(ratings_params)
     @rating.sender_id = current_user.id
 
-    # BEWARE
-    # THIS IS TEMPORARY
-    @rating.recipient_id = User.find_by(username: "mcpenchel").id
-    # THIS IS TEMPORARY
+    byebug
 
     if @rating.save
       redirect_to user_path(current_user)

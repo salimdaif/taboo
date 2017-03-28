@@ -27,6 +27,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @rating = Rating.new
 
     if @room.recipient_id == current_user.id
       @user = User.find(@room.recipient_id)
