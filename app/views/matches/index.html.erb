@@ -28,11 +28,11 @@
         <% @matches_hash.each do |user_id, score| %>
           <% user = User.find(user_id) %>
           <div class="col-xs-3 col-xs-offset-1 shadow">
-            <% if user.online? %>
-              <div class="row status-bar-on"></div>
-            <% else %>
+            <%# if user.online? %>
+              <%#div class="row status-bar-on"></div>
+            <%# else %>
               <div class="row status-bar-off"></div>
-            <% end %>
+            <%#end %>
             <div class="row user-details">
               <div class="avatar-container p-<%= score %>">
                 <%= image_tag "#{user.avatar}", class: "avatar" %>
