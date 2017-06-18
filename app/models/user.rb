@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :questions, through: :answers
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  #:confirmable
+         :recoverable, :rememberable, :trackable, :validatable,
+  :confirmable
 
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 18, less_than: 120 }
 
