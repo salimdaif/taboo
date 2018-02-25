@@ -52,8 +52,8 @@ class User < ApplicationRecord
     init_answers
 
     response = Typhoeus::Request.post("https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2016-10-20",
-                  :username => "12675a65-b083-44ee-ba84-bb8fb76b134a",
-                  :password => "ZhsoPmspqOeh",
+                  :username => "46c8f693-d5a1-48bd-9151-9ae46165421e",
+                  :password => "FQcfP0dTMPPY",
                   :headers => {'Content-Type' => 'text/plain;charset=utf-8'},
                   :body => {'data-binary' => File.open("tmp/answer_user_#{self.id}.txt")})
     self.insight = JSON.parse(response.response_body)
